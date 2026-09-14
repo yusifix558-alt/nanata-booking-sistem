@@ -35,10 +35,12 @@ export default function Home() {
   return (
     <div className="min-h-screen relative bg-[#fdfcfb] text-dark flex flex-col items-center justify-between py-12 px-6 overflow-hidden">
       
-      {/* Decorative Background Blobs */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div className="absolute top-[-5%] left-[-10%] w-[80%] h-[40%] rounded-full bg-nanata-pink/20 blur-3xl opacity-60"></div>
-        <div className="absolute bottom-[-5%] right-[-10%] w-[80%] h-[40%] rounded-full bg-teal-100/40 blur-3xl opacity-60"></div>
+      {/* Colorful Holographic Blobs */}
+      <div className="absolute inset-0 overflow-hidden -z-10 pointer-events-none bg-[#fdfcfb]">
+        <div className="absolute -top-[10%] -left-[10%] w-[70%] h-[60%] rounded-full bg-[#ffadd2] blur-[80px] opacity-90 mix-blend-multiply"></div>
+        <div className="absolute top-[15%] -right-[15%] w-[80%] h-[70%] rounded-full bg-[#8cecf5] blur-[80px] opacity-90 mix-blend-multiply"></div>
+        <div className="absolute -bottom-[10%] left-[5%] w-[70%] h-[60%] rounded-full bg-[#d6b4fc] blur-[80px] opacity-90 mix-blend-multiply"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-[50%] h-[50%] rounded-full bg-[#ffdf8c] blur-[80px] opacity-70 mix-blend-multiply"></div>
       </div>
       
       {/* Top / Brand */}
@@ -58,7 +60,7 @@ export default function Home() {
       <div className="w-full max-w-[320px] flex flex-col gap-3.5 mt-10 mb-auto z-10">
         <button 
           onClick={() => setShowBooking(true)} 
-          className="w-full bg-dark text-paper rounded-2xl py-4 text-xs font-bold uppercase tracking-widest hover:bg-nanata-pink hover:text-dark transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+          className="w-full bg-dark text-white rounded-2xl py-4 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-dark transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5"
         >
           Online Booking
         </button>
@@ -67,7 +69,7 @@ export default function Home() {
           href="https://wa.me/6285283120151" 
           target="_blank" 
           rel="noreferrer" 
-          className="w-full bg-white/70 backdrop-blur-md border border-dark/10 text-dark rounded-2xl py-4 text-xs font-semibold uppercase tracking-widest text-center hover:bg-white hover:border-dark/30 transition-all shadow-sm hover:shadow-md"
+          className="w-full bg-white/50 backdrop-blur-xl border border-white/80 text-dark rounded-2xl py-4 text-xs font-bold uppercase tracking-widest text-center hover:bg-white/90 hover:border-white transition-all shadow-sm hover:shadow-md"
         >
           WhatsApp
         </a>
@@ -76,7 +78,7 @@ export default function Home() {
           href="https://maps.app.goo.gl/iuF843vMhZYGH1YG9" 
           target="_blank" 
           rel="noreferrer" 
-          className="w-full bg-white/70 backdrop-blur-md border border-dark/10 text-dark rounded-2xl py-4 text-xs font-semibold uppercase tracking-widest text-center hover:bg-white hover:border-dark/30 transition-all shadow-sm hover:shadow-md"
+          className="w-full bg-white/50 backdrop-blur-xl border border-white/80 text-dark rounded-2xl py-4 text-xs font-bold uppercase tracking-widest text-center hover:bg-white/90 hover:border-white transition-all shadow-sm hover:shadow-md"
         >
           Google Maps
         </a>
@@ -85,7 +87,7 @@ export default function Home() {
           href="https://www.instagram.com/nanata.studio" 
           target="_blank" 
           rel="noreferrer" 
-          className="w-full bg-white/70 backdrop-blur-md border border-dark/10 text-dark rounded-2xl py-4 text-xs font-semibold uppercase tracking-widest text-center hover:bg-white hover:border-dark/30 transition-all shadow-sm hover:shadow-md"
+          className="w-full bg-white/50 backdrop-blur-xl border border-white/80 text-dark rounded-2xl py-4 text-xs font-bold uppercase tracking-widest text-center hover:bg-white/90 hover:border-white transition-all shadow-sm hover:shadow-md"
         >
           Instagram
         </a>
