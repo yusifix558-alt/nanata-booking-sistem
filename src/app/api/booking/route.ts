@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { appendBookingToSheet } from '@/lib/googleSheets';
 import { generateAvailableSlots } from '@/lib/availability';
 import { createEvent, EventInput } from '@/lib/googleCalendar';
-import { SERVICES, artistS } from '@/lib/data';
+import { SERVICES, ARTISTS } from '@/lib/data';
 
 export const dynamic = 'force-dynamic';
 
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
 
     // 2. Validate Service and artist (Get details from static data)
     const service = SERVICES.find(s => s.id === data.serviceId);
-    const artist = artistS.find(b => b.id === data.artistId);
+    const artist = ARTISTS.find(b => b.id === data.artistId);
 
     if (!service || !artist) {
       return NextResponse.json({ error: 'Layanan atau artist tidak ditemukan.' }, { status: 404 });

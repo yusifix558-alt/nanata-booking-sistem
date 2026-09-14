@@ -24,7 +24,7 @@ export async function appendBookingToSheet(bookingData: {
   customerName: string;
   customerWhatsapp: string;
   serviceName: string;
-  barberName: string;
+  artistName: string;
   date: string;
   time: string;
   price: number;
@@ -51,7 +51,7 @@ export async function appendBookingToSheet(bookingData: {
             bookingData.customerName,           // Nama Pelanggan
             bookingData.customerWhatsapp,       // No WA
             bookingData.serviceName,            // Layanan
-            bookingData.barberName,             // Capster
+            bookingData.artistName,             // Artist
             bookingData.date,                   // Tanggal
             bookingData.time,                   // Waktu
             bookingData.price,                  // Harga

@@ -1,5 +1,5 @@
 import { getEvents, CalendarEvent } from './googleCalendar';
-import { BARBERS } from './data';
+import { ARTISTS } from './data';
 
 const OPENING_HOURS = {
   // 1 = Monday, 7 = Sunday
@@ -12,11 +12,11 @@ const OPENING_HOURS = {
   7: { start: 12, end: 21 },
 };
 
-export async function generateAvailableSlots(barberId: string, dateStr: string, durationMinutes: number) {
+export async function generateAvailableSlots(artistId: string, dateStr: string, durationMinutes: number) {
   // 1. Get Barber Calendar ID
   // In the future, you can add a 'calendarId' property to the BARBERS array in data.ts for each capster
-  const barber = BARBERS.find(b => b.id === barberId);
-  const calendarId = (barber as { calendarId?: string })?.calendarId || process.env.GOOGLE_CALENDAR_ID || 'primary';
+  const artist = ARTISTS.find(a => a.id === artistId);
+  const calendarId = (artist as { calendarId?: string })?.calendarId || process.env.GOOGLE_CALENDAR_ID || 'primary';
 
   const targetDate = new Date(dateStr);
   const dayOfWeek = targetDate.getDay() === 0 ? 7 : targetDate.getDay();
