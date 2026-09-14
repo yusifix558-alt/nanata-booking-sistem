@@ -561,7 +561,7 @@ export default function BookingWizard() {
         ) : (
           <button 
             onClick={handleConfirm}
-            disabled={isSubmitting || !state.termsAccepted}
+            disabled={isSubmitting || !state.customer.name.trim() || !state.customer.whatsapp.trim()}
             className="bg-[#E8A0BF] text-white px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] rounded-full hover:opacity-90 disabled:opacity-50 transition-opacity w-full md:w-auto flex items-center justify-center uppercase"
           >
             {isSubmitting ? (
