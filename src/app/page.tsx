@@ -44,6 +44,12 @@ export default function Home() {
         </div>
         <h1 className="font-editorial text-5xl font-bold tracking-tight mb-1">namata</h1>
         <h2 className="font-editorial text-2xl italic text-namata-pink">studio</h2>
+        
+        <div className="mt-6 flex flex-col items-center gap-2 text-[11px] text-dark/80 tracking-wider font-medium">
+          <p>Eyelash, Nail Art, Hair.</p>
+          <p className="text-center">Jl. Caman Raya No.11, Bekasi 17412</p>
+          <p>Open 10.00 AM - 21.00 PM (Everyday)</p>
+        </div>
       </div>
 
       {/* Buttons Container */}
@@ -74,7 +80,7 @@ export default function Home() {
         </a>
         
         <a 
-          href="#" 
+          href="https://www.instagram.com/nanata.studio" 
           target="_blank" 
           rel="noreferrer" 
           className="w-full bg-transparent border border-dark text-dark rounded-[2rem] py-4 text-[11px] font-bold uppercase tracking-[0.2em] text-center hover:bg-dark hover:text-paper transition-colors"
@@ -82,14 +88,7 @@ export default function Home() {
           Instagram
         </a>
         
-        <a 
-          href="#" 
-          target="_blank" 
-          rel="noreferrer" 
-          className="w-full bg-transparent border border-dark text-dark rounded-[2rem] py-4 text-[11px] font-bold uppercase tracking-[0.2em] text-center hover:bg-dark hover:text-paper transition-colors"
-        >
-          Pricelist
-        </a>
+        
       </div>
 
       {/* Footer text */}
