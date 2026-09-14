@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Jost, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
+
 import SplashScreen from "@/components/SplashScreen";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
@@ -44,12 +44,12 @@ export default function RootLayout({
       <body className={`${fontSans.variable} ${fontEditorial.variable} font-sans bg-[#EAEAEA] text-dark antialiased selection:bg-namata-pink selection:text-dark flex justify-center`}>
         <div className="w-full max-w-[430px] min-h-screen bg-paper relative shadow-2xl overflow-x-hidden border-x border-dark/10">
         <SplashScreen />
-        <Header />
+        
         <main className="min-h-screen">
           {children}
         </main>
         <FloatingWhatsApp />
-        <Footer />
+        
         </div>
       </body>
     </html>
