@@ -298,26 +298,6 @@ export default function BookingWizard() {
           </div>
         )}
 
-        {/* STEP 2: artist */}
-         className="sr-only" />
-                  <div className="flex flex-col items-center">
-                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 bg-paper shrink-0 mb-3 rounded-full overflow-hidden border border-dark/10">
-                      <Image src={artist.image} alt={artist.name} fill className="object-cover grayscale" />
-                    </div>
-                    <h3 className="font-serif text-[11px] sm:text-lg font-bold text-dark truncate w-full">{artist.name}</h3>
-                    <p className="text-namata-pink text-[8px] sm:text-xs font-bold tracking-widest mb-1 uppercase truncate w-full">{artist.role}</p>
-                    <p className="text-dark/80 text-[10px] sm:text-sm font-semibold mb-3">{artist.priceLabel}</p>
-                    
-                    <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border flex items-center justify-center shrink-0 ${state.artistId === artist.id ? 'border-dark' : 'border-dark/20'}`}>
-                      {state.artistId === artist.id && <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-dark rounded-full"></div>}
-                    </div>
-                  </div>
-                </label>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* STEP 3: DATE & TIME */}
         {state.step === 2 && (
           <div className="space-y-8">
