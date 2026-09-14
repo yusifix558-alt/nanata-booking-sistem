@@ -41,8 +41,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className="scroll-smooth">
-      <body className={`${fontSans.variable} ${fontEditorial.variable} font-sans bg-[#EAEAEA] text-dark antialiased selection:bg-nanata-pink selection:text-dark flex justify-center`}>
-        <div className="w-full max-w-[430px] min-h-screen bg-paper relative shadow-2xl overflow-x-hidden border-x border-dark/10">
+      <body className={`${fontSans.variable} ${fontEditorial.variable} font-sans bg-[#F3E8EB] text-dark antialiased selection:bg-nanata-pink selection:text-dark flex justify-center`}>
+        <div className="w-full max-w-[430px] min-h-screen bg-[#FFF7F9] relative shadow-[0_0_40px_rgba(0,0,0,0.05)] overflow-x-hidden">
         <SplashScreen />
         
         <main className="min-h-screen">
