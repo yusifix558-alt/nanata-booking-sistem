@@ -207,47 +207,47 @@ export default function BookingWizard() {
     };
 
     return (
-      <div className="max-w-2xl mx-auto bg-paper p-8 md:p-12 shadow-sm border border-dark/5">
+      <div className="max-w-2xl mx-auto bg-paper p-8 md:p-12 shadow-sm border border-[#b473f5]/5">
         <div className="flex justify-center mb-6">
-          <CheckCircle2 className="w-16 h-16 text-dark" strokeWidth={1} />
+          <CheckCircle2 className="w-16 h-16 text-slate-800" strokeWidth={1} />
         </div>
-        <h2 className="text-center  text-3xl font-bold text-dark mb-2">BOOKING BERHASIL!</h2>
-        <p className="text-center text-dark/70 mb-10">Sampai jumpa di REAL.CO!</p>
+        <h2 className="text-center  text-3xl font-bold text-slate-800 mb-2">BOOKING BERHASIL!</h2>
+        <p className="text-center text-slate-800/70 mb-10">Sampai jumpa di REAL.CO!</p>
 
-        <div className="border-t border-b border-dark/10 py-6 mb-10 space-y-4">
+        <div className="border-t border-b border-[#b473f5]/10 py-6 mb-10 space-y-4">
           <div className="flex justify-between">
-            <span className="text-dark/60 text-sm font-medium tracking-widest">TREATMENT</span>
-            <span className="text-dark font-medium">{service?.name}</span>
+            <span className="text-slate-800/60 text-sm font-medium tracking-widest">TREATMENT</span>
+            <span className="text-slate-800 font-medium">{service?.name}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-dark/60 text-sm font-medium tracking-widest">artist</span>
-            <span className="text-dark font-medium">{artist?.name || state.artistId}</span>
+            <span className="text-slate-800/60 text-sm font-medium tracking-widest">artist</span>
+            <span className="text-slate-800 font-medium">{artist?.name || state.artistId}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-dark/60 text-sm font-medium tracking-widest">TANGGAL</span>
-            <span className="text-dark font-medium">{state.date}</span>
+            <span className="text-slate-800/60 text-sm font-medium tracking-widest">TANGGAL</span>
+            <span className="text-slate-800 font-medium">{state.date}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-dark/60 text-sm font-medium tracking-widest">WAKTU</span>
-            <span className="text-dark font-medium">{state.time}</span>
+            <span className="text-slate-800/60 text-sm font-medium tracking-widest">WAKTU</span>
+            <span className="text-slate-800 font-medium">{state.time}</span>
           </div>
-          <div className="flex justify-between pt-4 border-t border-dark/5">
-            <span className="text-dark/60 text-sm font-medium tracking-widest">TOTAL</span>
-            <span className="text-dark font-bold text-lg">{artist?.priceLabel}</span>
+          <div className="flex justify-between pt-4 border-t border-[#b473f5]/5">
+            <span className="text-slate-800/60 text-sm font-medium tracking-widest">TOTAL</span>
+            <span className="text-slate-800 font-bold text-lg">{artist?.priceLabel}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-dark/60 text-sm font-medium tracking-widest">BOOKING ID</span>
-            <span className="text-dark font-medium font-mono text-sm">
+            <span className="text-slate-800/60 text-sm font-medium tracking-widest">BOOKING ID</span>
+            <span className="text-slate-800 font-medium font-mono text-sm">
               {confirmedBookingCode || `RC${Math.floor(Math.random() * 100000)}`}
             </span>
           </div>
         </div>
 
         <div className="space-y-4">
-          <button onClick={handleAddToCalendar} className="w-full bg-dark text-paper py-4 text-sm font-medium tracking-widest hover:bg-dark transition-colors flex items-center justify-center gap-2">
+          <button onClick={handleAddToCalendar} className="w-full bg-gradient-to-r from-[#ff7eb3] to-[#b473f5] text-white py-4 text-sm font-medium tracking-widest hover:bg-[#b473f5] transition-colors flex items-center justify-center gap-2">
             <Calendar className="w-4 h-4" /> TAMBAH KE GOOGLE CALENDAR
           </button>
-          <button onClick={handleWhatsApp} className="w-full border border-dark text-dark py-4 text-sm font-medium tracking-widest hover:bg-dark/5 transition-colors">
+          <button onClick={handleWhatsApp} className="w-full border border-[#b473f5] text-slate-800 py-4 text-sm font-medium tracking-widest hover:bg-[#b473f5]/5 transition-colors">
             CHAT VIA WHATSAPP
           </button>
         </div>
@@ -262,16 +262,16 @@ export default function BookingWizard() {
         <div className="flex items-center justify-between text-[10px] sm:text-xs font-medium tracking-widest mb-3 sm:mb-4 px-2 sm:px-0">
           {[1, 2, 3].map((stepNumber) => (
             <div key={stepNumber} className={`flex items-center ${stepNumber !== 5 ? 'w-full' : ''}`}>
-              <div className={`w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full border ${state.step === stepNumber ? 'bg-dark text-paper border-dark' : state.step > stepNumber ? 'bg-dark/10 border-dark/10 text-dark' : 'bg-transparent border-dark/20 text-dark/40'}`}>
+              <div className={`w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full border ${state.step === stepNumber ? 'bg-gradient-to-r from-[#ff7eb3] to-[#b473f5] text-white border-[#b473f5]' : state.step > stepNumber ? 'bg-[#b473f5]/10 border-[#b473f5]/10 text-slate-800' : 'bg-transparent border-[#b473f5]/20 text-slate-800/40'}`}>
                 {stepNumber}
               </div>
               {stepNumber !== 5 && (
-                <div className={`flex-1 h-px mx-1 sm:mx-2 ${state.step > stepNumber ? 'bg-dark/20' : 'bg-dark/10'}`}></div>
+                <div className={`flex-1 h-px mx-1 sm:mx-2 ${state.step > stepNumber ? 'bg-[#b473f5]/20' : 'bg-[#b473f5]/10'}`}></div>
               )}
             </div>
           ))}
         </div>
-        <div className="text-center text-xs sm:text-sm font-bold tracking-widest text-dark">
+        <div className="text-center text-xs sm:text-sm font-bold tracking-widest text-slate-800">
           {state.step === 1 && "01 PILIH TREATMENT"}
           
           {state.step === 2 && "02 TANGGAL & WAKTU"}
@@ -285,17 +285,17 @@ export default function BookingWizard() {
         {/* STEP 1: SERVICE */}
         {state.step === 1 && (
           <div className="space-y-3 sm:space-y-4">
-            <p className="text-dark/70 mb-4 sm:mb-6 text-xs sm:text-base">Pilih TREATMENT yang sesuai dengan kebutuhanmu.</p>
+            <p className="text-slate-800/70 mb-4 sm:mb-6 text-xs sm:text-base">Pilih TREATMENT yang sesuai dengan kebutuhanmu.</p>
             {SERVICES.map((service) => (
-              <label key={service.id} className={`block relative border p-4 sm:p-6 cursor-pointer transition-all ${state.serviceId === service.id ? 'border-dark bg-dark/5' : 'border-dark/10 hover:border-dark/30'}`}>
+              <label key={service.id} className={`block relative border p-4 sm:p-6 cursor-pointer transition-all ${state.serviceId === service.id ? 'border-[#b473f5] bg-[#b473f5]/5' : 'border-[#b473f5]/10 hover:border-[#b473f5]/30'}`}>
                 <input type="radio" name="service" value={service.id} checked={state.serviceId === service.id} onChange={() => updateState({ serviceId: service.id })} className="sr-only" />
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className=" text-base sm:text-xl font-bold text-dark tracking-tight">{service.name}</h3>
-                    <p className="text-dark/70 text-xs sm:text-sm mt-1">{service.priceLabel}</p>
+                    <h3 className=" text-base sm:text-xl font-bold text-slate-800 tracking-tight">{service.name}</h3>
+                    <p className="text-slate-800/70 text-xs sm:text-sm mt-1">{service.priceLabel}</p>
                   </div>
-                  <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border flex items-center justify-center ${state.serviceId === service.id ? 'border-dark' : 'border-dark/20'}`}>
-                    {state.serviceId === service.id && <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-dark rounded-full"></div>}
+                  <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border flex items-center justify-center ${state.serviceId === service.id ? 'border-[#b473f5]' : 'border-[#b473f5]/20'}`}>
+                    {state.serviceId === service.id && <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#b473f5] rounded-full"></div>}
                   </div>
                 </div>
               </label>
@@ -307,18 +307,18 @@ export default function BookingWizard() {
         {state.step === 2 && (
           <div className="space-y-8">
               <div>
-                <label className="block text-sm font-medium tracking-widest text-dark/70 mb-3">PILIH TANGGAL</label>
+                <label className="block text-sm font-medium tracking-widest text-slate-800/70 mb-3">PILIH TANGGAL</label>
                 <div className="bg-transparent py-4 sm:py-6">
                   <div className="flex justify-between items-center mb-6">
-                    <button onClick={handlePrevMonth} className="p-2 hover:bg-dark/5 text-dark transition-colors rounded-full"><ChevronLeft className="w-5 h-5" /></button>
-                    <div className=" text-xl font-bold text-dark tracking-tight">
+                    <button onClick={handlePrevMonth} className="p-2 hover:bg-[#b473f5]/5 text-slate-800 transition-colors rounded-full"><ChevronLeft className="w-5 h-5" /></button>
+                    <div className=" text-xl font-bold text-slate-800 tracking-tight">
                       {monthsIndo[currentMonth.getMonth()]} {currentMonth.getFullYear()}
                     </div>
-                    <button onClick={handleNextMonth} className="p-2 hover:bg-dark/5 text-dark transition-colors rounded-full"><ChevronRight className="w-5 h-5" /></button>
+                    <button onClick={handleNextMonth} className="p-2 hover:bg-[#b473f5]/5 text-slate-800 transition-colors rounded-full"><ChevronRight className="w-5 h-5" /></button>
                   </div>
                   <div className="grid grid-cols-7 gap-1 text-center mb-3">
                     {daysIndo.map(day => (
-                      <div key={day} className="text-[9px] sm:text-[10px] font-bold tracking-widest text-dark/50 uppercase">{day}</div>
+                      <div key={day} className="text-[9px] sm:text-[10px] font-bold tracking-widest text-slate-800/50 uppercase">{day}</div>
                     ))}
                   </div>
                   <div className="grid grid-cols-7 gap-1 sm:gap-2">
@@ -340,9 +340,9 @@ export default function BookingWizard() {
                           disabled={isPast}
                           onClick={() => updateState({ date: dateStr, time: null })}
                           className={`h-10 w-full text-sm sm:text-base font-medium flex items-center justify-center transition-all ${
-                            isSelected ? 'bg-nanata-pink text-dark shadow-md font-bold' : 
-                            isPast ? 'text-dark/20 cursor-not-allowed' : 
-                            'text-dark hover:bg-dark/5 cursor-pointer hover:text-nanata-pink'
+                            isSelected ? 'bg-gradient-to-r from-[#ff7eb3] to-[#b473f5] text-white shadow-md font-bold' : 
+                            isPast ? 'text-slate-800/20 cursor-not-allowed' : 
+                            'text-slate-800 hover:bg-[#b473f5]/5 cursor-pointer hover:text-nanata-pink'
                           }`}
                         >
                           {date.getDate()}
@@ -355,10 +355,10 @@ export default function BookingWizard() {
 
             {state.date && (
               <div>
-                <label className="block text-sm font-medium tracking-widest text-dark/70 mb-3">WAKTU TERSEDIA</label>
+                <label className="block text-sm font-medium tracking-widest text-slate-800/70 mb-3">WAKTU TERSEDIA</label>
                 
                 {isLoadingSlots && (
-                  <div className="flex flex-col items-center justify-center py-12 text-dark/60">
+                  <div className="flex flex-col items-center justify-center py-12 text-slate-800/60">
                     <Loader2 className="w-8 h-8 animate-spin mb-4 text-nanata-pink" />
                     <p className="text-sm font-medium tracking-widest">MEMERIKSA JADWAL...</p>
                   </div>
@@ -377,7 +377,7 @@ export default function BookingWizard() {
                     To let the UI be testable, I'll provide a fallback just for the demo if the array is empty but no error is set. 
                     Actually, if the backend returns 503, slotError is set. 
                     I'll add a 'development mode' bypass button. */}
-                    <div className="col-span-full text-center py-8 text-dark/50 text-sm">
+                    <div className="col-span-full text-center py-8 text-slate-800/50 text-sm">
                       Tidak ada jadwal tersedia pada tanggal ini.
                     </div>
                   </div>
@@ -385,7 +385,7 @@ export default function BookingWizard() {
                 
                 {/* Developer bypass to see next steps since we don't have real API */}
                 {!isLoadingSlots && slotError && (
-                   <button onClick={() => { setSlotError(null); setAvailableSlots([{time: "10:00", available: true}, {time: "11:00", available: false}, {time: "13:00", available: true}]); }} className="mt-4 text-xs underline text-dark/40">Dev Bypass: Show mock slots</button>
+                   <button onClick={() => { setSlotError(null); setAvailableSlots([{time: "10:00", available: true}, {time: "11:00", available: false}, {time: "13:00", available: true}]); }} className="mt-4 text-xs underline text-slate-800/40">Dev Bypass: Show mock slots</button>
                 )}
 
                 {!isLoadingSlots && !slotError && availableSlots.length > 0 && (
@@ -397,10 +397,10 @@ export default function BookingWizard() {
                         onClick={() => updateState({ time: slot.time })}
                         className={`py-4 border text-center transition-all ${
                           !slot.available 
-                            ? 'bg-dark/5 border-dark/5 text-dark/30 cursor-not-allowed line-through' 
+                            ? 'bg-[#b473f5]/5 border-[#b473f5]/5 text-slate-800/30 cursor-not-allowed line-through' 
                             : state.time === slot.time 
-                              ? 'bg-dark text-paper border-dark' 
-                              : 'bg-transparent border-dark/20 text-dark hover:border-dark/50'
+                              ? 'bg-gradient-to-r from-[#ff7eb3] to-[#b473f5] text-white border-[#b473f5]' 
+                              : 'bg-transparent border-[#b473f5]/20 text-slate-800 hover:border-[#b473f5]/50'
                         }`}
                       >
                         <span className="block font-medium">{slot.time}</span>
@@ -420,45 +420,45 @@ export default function BookingWizard() {
         {state.step === 3 && (
           <div className="space-y-6">
             <div>
-              <label htmlFor="customer-name" className="block text-xs font-bold tracking-widest text-dark/70 mb-2">NAMA LENGKAP *</label>
+              <label htmlFor="customer-name" className="block text-xs font-bold tracking-widest text-slate-800/70 mb-2">NAMA LENGKAP *</label>
               <input 
                 id="customer-name"
                 type="text" 
                 value={state.customer.name}
                 onChange={(e) => updateState({ customer: { ...state.customer, name: e.target.value } })}
-                className="w-full border-b border-dark/20 py-3 font-sans text-dark focus:border-dark focus:outline-none bg-transparent"
+                className="w-full border-b border-[#b473f5]/20 py-3 font-sans text-slate-800 focus:border-[#b473f5] focus:outline-none bg-transparent"
                 placeholder="Masukkan nama lengkap"
               />
             </div>
             <div>
-              <label htmlFor="customer-whatsapp" className="block text-xs font-bold tracking-widest text-dark/70 mb-2">WHATSAPP *</label>
+              <label htmlFor="customer-whatsapp" className="block text-xs font-bold tracking-widest text-slate-800/70 mb-2">WHATSAPP *</label>
               <input 
                 id="customer-whatsapp"
                 type="tel" 
                 value={state.customer.whatsapp}
                 onChange={(e) => updateState({ customer: { ...state.customer, whatsapp: e.target.value } })}
-                className="w-full border-b border-dark/20 py-3 font-sans text-dark focus:border-dark focus:outline-none bg-transparent"
+                className="w-full border-b border-[#b473f5]/20 py-3 font-sans text-slate-800 focus:border-[#b473f5] focus:outline-none bg-transparent"
                 placeholder="Contoh: 08123456789"
               />
             </div>
             <div>
-              <label htmlFor="customer-email" className="block text-xs font-bold tracking-widest text-dark/70 mb-2">EMAIL (OPSIONAL)</label>
+              <label htmlFor="customer-email" className="block text-xs font-bold tracking-widest text-slate-800/70 mb-2">EMAIL (OPSIONAL)</label>
               <input 
                 id="customer-email"
                 type="email" 
                 value={state.customer.email}
                 onChange={(e) => updateState({ customer: { ...state.customer, email: e.target.value } })}
-                className="w-full border-b border-dark/20 py-3 font-sans text-dark focus:border-dark focus:outline-none bg-transparent"
+                className="w-full border-b border-[#b473f5]/20 py-3 font-sans text-slate-800 focus:border-[#b473f5] focus:outline-none bg-transparent"
                 placeholder="Untuk calendar invitation"
               />
             </div>
             <div>
-              <label htmlFor="customer-notes" className="block text-[11px] font-bold tracking-[0.2em] text-dark/70 mb-2 uppercase">REQUEST (OPSIONAL)</label>
+              <label htmlFor="customer-notes" className="block text-[11px] font-bold tracking-[0.2em] text-slate-800/70 mb-2 uppercase">REQUEST (OPSIONAL)</label>
               <textarea 
                 id="customer-notes"
                 value={state.customer.notes}
                 onChange={(e) => updateState({ customer: { ...state.customer, notes: e.target.value } })}
-                className="w-full border-b border-dark/20 py-3 font-sans text-dark focus:border-dark focus:outline-none bg-transparent resize-none h-24 text-sm"
+                className="w-full border-b border-[#b473f5]/20 py-3 font-sans text-slate-800 focus:border-[#b473f5] focus:outline-none bg-transparent resize-none h-24 text-sm"
                 placeholder="Tuliskan model rambut atau request khusus yang kamu inginkan..."
                 maxLength={500}
               />
@@ -469,7 +469,7 @@ export default function BookingWizard() {
         {/* STEP 5: CONFIRMATION */}
         {state.step === 4 && (
           <div className="space-y-8">
-            <h3 className=" text-2xl font-bold text-dark mb-6">RINGKASAN BOOKING</h3>
+            <h3 className=" text-2xl font-bold text-slate-800 mb-6">RINGKASAN BOOKING</h3>
             
             {submitError && (
               <div className="bg-red-50 text-red-800 p-6 flex items-start gap-4 border border-red-100 mb-6">
@@ -478,39 +478,39 @@ export default function BookingWizard() {
               </div>
             )}
 
-            <div className="space-y-4 bg-paper p-6 border border-dark/5">
+            <div className="space-y-4 bg-paper p-6 border border-[#b473f5]/5">
               <div className="flex justify-between items-center">
-                <span className="text-dark/60 text-[10px] font-bold tracking-[0.2em] uppercase">TREATMENT</span>
-                <span className="text-dark font-medium text-sm">{SERVICES.find(s => s.id === state.serviceId)?.name}</span>
+                <span className="text-slate-800/60 text-[10px] font-bold tracking-[0.2em] uppercase">TREATMENT</span>
+                <span className="text-slate-800 font-medium text-sm">{SERVICES.find(s => s.id === state.serviceId)?.name}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-dark/60 text-[10px] font-bold tracking-[0.2em] uppercase">artist</span>
-                <span className="text-dark font-medium text-sm">{ARTISTS.find(b => b.id === state.artistId)?.name}</span>
+                <span className="text-slate-800/60 text-[10px] font-bold tracking-[0.2em] uppercase">artist</span>
+                <span className="text-slate-800 font-medium text-sm">{ARTISTS.find(b => b.id === state.artistId)?.name}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-dark/60 text-[10px] font-bold tracking-[0.2em] uppercase">TANGGAL</span>
-                <span className="text-dark font-medium text-sm">{state.date}</span>
+                <span className="text-slate-800/60 text-[10px] font-bold tracking-[0.2em] uppercase">TANGGAL</span>
+                <span className="text-slate-800 font-medium text-sm">{state.date}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-dark/60 text-[10px] font-bold tracking-[0.2em] uppercase">WAKTU</span>
-                <span className="text-dark font-medium text-sm">{state.time}</span>
+                <span className="text-slate-800/60 text-[10px] font-bold tracking-[0.2em] uppercase">WAKTU</span>
+                <span className="text-slate-800 font-medium text-sm">{state.time}</span>
               </div>
-              <div className="flex justify-between items-center pt-4 border-t border-dark/10">
-                <span className="text-dark/60 text-[10px] font-bold tracking-[0.2em] uppercase">TOTAL</span>
-                <span className="text-dark font-bold text-sm">{ARTISTS.find(b => b.id === state.artistId)?.priceLabel}</span>
+              <div className="flex justify-between items-center pt-4 border-t border-[#b473f5]/10">
+                <span className="text-slate-800/60 text-[10px] font-bold tracking-[0.2em] uppercase">TOTAL</span>
+                <span className="text-slate-800 font-bold text-sm">{ARTISTS.find(b => b.id === state.artistId)?.priceLabel}</span>
               </div>
             </div>
 
             <div className="space-y-2">
-               <p className="text-dark/60 text-[10px] font-bold tracking-[0.2em] uppercase mb-4">INFORMASI KONTAK</p>
-               <p className="text-dark font-medium text-sm">{state.customer.name}</p>
-               <p className="text-dark font-medium text-sm">{state.customer.whatsapp}</p>
-               {state.customer.notes && <p className="text-dark/70 text-sm italic mt-2">&quot;{state.customer.notes}&quot;</p>}
+               <p className="text-slate-800/60 text-[10px] font-bold tracking-[0.2em] uppercase mb-4">INFORMASI KONTAK</p>
+               <p className="text-slate-800 font-medium text-sm">{state.customer.name}</p>
+               <p className="text-slate-800 font-medium text-sm">{state.customer.whatsapp}</p>
+               {state.customer.notes && <p className="text-slate-800/70 text-sm italic mt-2">&quot;{state.customer.notes}&quot;</p>}
             </div>
 
             <div className="bg-paper/50 p-6 border border-nanata-pink/30 rounded-sm">
-              <h4 className="text-dark font-bold text-xs tracking-widest mb-2 uppercase">ATURAN KETERLAMBATAN</h4>
-              <p className="text-dark/80 text-xs leading-relaxed mb-6">
+              <h4 className="text-slate-800 font-bold text-xs tracking-widest mb-2 uppercase">ATURAN KETERLAMBATAN</h4>
+              <p className="text-slate-800/80 text-xs leading-relaxed mb-6">
                 Mohon datang tepat waktu sesuai jadwal booking. <strong>Toleransi keterlambatan maksimal 5 menit</strong>. Keterlambatan lebih dari 5 menit mengakibatkan booking dibatalkan atau dialihkan ke antrean berikutnya sesuai ketersediaan artist.
               </p>
               
@@ -518,14 +518,14 @@ export default function BookingWizard() {
                 <div className="relative flex items-center justify-center mt-0.5">
                   <input 
                     type="checkbox" 
-                    className="peer appearance-none w-5 h-5 border-2 border-dark/40 checked:bg-dark checked:border-dark transition-colors cursor-pointer"
+                    className="peer appearance-none w-5 h-5 border-2 border-[#b473f5]/40 checked:bg-[#b473f5] checked:border-[#b473f5] transition-colors cursor-pointer"
                     onChange={(e) => updateState({ ...state, termsAccepted: e.target.checked })}
                   />
                   <svg className="absolute w-3 h-3 text-paper opacity-0 peer-checked:opacity-100 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <span className="text-dark/90 text-sm font-medium leading-relaxed group-hover:text-dark transition-colors">
+                <span className="text-slate-800/90 text-sm font-medium leading-relaxed group-hover:text-slate-800 transition-colors">
                   Saya memahami bahwa booking akan dikonfirmasi oleh tim REAL.CO melalui WhatsApp dan mematuhi aturan keterlambatan di atas. <span className="text-red-500">*</span>
                 </span>
               </label>
@@ -540,7 +540,7 @@ export default function BookingWizard() {
         {state.step > 1 && (
           <button 
             onClick={prevStep}
-            className="border border-dark/20 text-dark px-6 py-3 sm:px-10 sm:py-4 text-[10px] font-bold tracking-[0.15em] hover:bg-dark/5 transition-colors flex items-center justify-center uppercase w-full md:w-auto"
+            className="border border-[#b473f5]/20 text-slate-800 px-6 py-3 sm:px-10 sm:py-4 text-[10px] font-bold tracking-[0.15em] hover:bg-[#b473f5]/5 transition-colors flex items-center justify-center uppercase w-full md:w-auto"
           >
             KEMBALI
           </button>
@@ -554,7 +554,7 @@ export default function BookingWizard() {
               (state.step === 2 && (!state.date || !state.time)) ||
               (state.step === 3 && (!state.customer.name.trim() || !state.customer.whatsapp.trim()))
             }
-            className="bg-dark text-paper px-6 py-3 sm:px-10 sm:py-4 text-[10px] font-bold tracking-[0.15em] hover:bg-dark/90 disabled:bg-dark/20 disabled:text-dark/50 transition-colors flex items-center w-full md:w-auto justify-center uppercase"
+            className="bg-gradient-to-r from-[#ff7eb3] to-[#b473f5] text-white px-6 py-3 sm:px-10 sm:py-4 text-[10px] font-bold tracking-[0.15em] hover:bg-[#b473f5]/90 disabled:bg-[#b473f5]/20 disabled:text-slate-800/50 transition-colors flex items-center w-full md:w-auto justify-center uppercase"
           >
             LANJUT <ArrowRight className="ml-2 w-4 h-4" />
           </button>
@@ -562,7 +562,7 @@ export default function BookingWizard() {
           <button 
             onClick={handleConfirm}
             disabled={isSubmitting || !state.termsAccepted}
-            className="bg-nanata-pink text-dark px-6 py-3 sm:px-10 sm:py-4 text-[10px] font-bold tracking-[0.15em] hover:bg-paper disabled:bg-dark/10 disabled:text-dark/40 transition-colors w-full md:w-auto flex items-center justify-center uppercase"
+            className="bg-gradient-to-r from-[#ff7eb3] to-[#b473f5] text-white px-6 py-3 sm:px-10 sm:py-4 text-[10px] font-bold tracking-[0.15em] hover:bg-paper disabled:bg-[#b473f5]/10 disabled:text-slate-800/40 transition-colors w-full md:w-auto flex items-center justify-center uppercase"
           >
             {isSubmitting ? (
               <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> MEMPROSES...</>
