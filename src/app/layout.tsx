@@ -4,7 +4,7 @@ import "./globals.css";
 
 
 import SplashScreen from "@/components/SplashScreen";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 const fontSans = Jost({ subsets: ["latin"], variable: "--font-sans" });
 const fontEditorial = Cormorant_Garamond({ subsets: ["latin"], weight: ["300", "400", "600", "700"], style: ["normal", "italic"], variable: "--font-editorial" });
@@ -48,7 +48,7 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
-        <FloatingWhatsApp />
+        
         
         </div>
       </body>
