@@ -20,7 +20,7 @@ export default function Footer() {
           <ul className="space-y-3 text-[11px] font-medium tracking-wide text-dark">
             <li><Link href="/#treatments" className="hover:text-namata-pink transition-colors">Treatments</Link></li>
             <li><Link href="/#artists" className="hover:text-namata-pink transition-colors">Artists</Link></li>
-            <li><Link href="/booking" className="hover:text-namata-pink transition-colors">Booking</Link></li>
+            <li><Link href="#booking" className="hover:text-namata-pink transition-colors">Booking</Link></li>
           </ul>
         </div>
 

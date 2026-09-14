@@ -62,7 +62,7 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            href="/booking"
+            href="#booking"
             className="text-[11px] font-bold tracking-[0.2em] text-paper bg-dark px-10 py-4 mt-8 uppercase"
             onClick={() => setIsMobileMenuOpen(false)}
           >

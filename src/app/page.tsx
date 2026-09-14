@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
+import BookingWizard from "@/components/booking/BookingWizard";
 
 export default function Home() {
   return (
@@ -26,7 +27,7 @@ export default function Home() {
           
           <FadeIn delay={0.4}>
             <div>
-              <Link href="/booking" className="inline-block w-full text-center border border-dark px-8 py-4 uppercase tracking-[0.2em] text-[10px] font-bold hover:bg-dark hover:text-paper transition-colors bg-dark text-paper">
+              <Link href="#booking" className="inline-block w-full text-center border border-dark px-8 py-4 uppercase tracking-[0.2em] text-[10px] font-bold hover:bg-dark hover:text-paper transition-colors bg-dark text-paper">
                 Reservasi Sekarang
               </Link>
             </div>
@@ -75,7 +76,7 @@ export default function Home() {
           </FadeIn>
         </div>
 
-        <Link href="/booking" className="w-full block p-8 hover:bg-namata-pink transition-colors cursor-pointer group bg-dark text-paper">
+        <Link href="#booking" className="w-full block p-8 hover:bg-namata-pink transition-colors cursor-pointer group bg-dark text-paper">
           <FadeIn delay={0.4}>
             <div className="font-editorial text-4xl mb-4 italic text-namata-pink">03.</div>
             <h3 className="uppercase tracking-[0.15em] text-xs font-bold mb-3">Booking</h3>
@@ -111,7 +112,7 @@ export default function Home() {
               { id: 'N3', name: "DINA", role: "NAIL TECHNICIAN", image: "https://images.unsplash.com/photo-1616847259166-5121b66dfa04?auto=format&fit=crop&w=600&q=80" },
             ].map((artist, idx) => (
               <FadeIn key={artist.name} delay={idx * 0.1}>
-                <Link href={`/booking?artist=${artist.id}`} className="group cursor-pointer block border border-dark p-2 hover:bg-dark hover:text-paper transition-colors duration-500">
+                <Link href={`#booking`} className="group cursor-pointer block border border-dark p-2 hover:bg-dark hover:text-paper transition-colors duration-500">
                   <div className="relative aspect-[3/4] overflow-hidden bg-namata-pink/20 mb-3 border border-dark">
                     <Image src={artist.image} alt={artist.name} fill className="object-cover grayscale" />
                   </div>
@@ -128,6 +129,22 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Booking Section */}
+      <section id="booking" className="py-16 px-4 bg-paper">
+        <FadeIn>
+          <div className="mb-10 text-center">
+            <h2 className="font-editorial text-4xl font-bold text-dark mb-3">Reservation.</h2>
+            <p className="text-[10px] uppercase tracking-widest text-dark/70 leading-relaxed">
+              Pilih artist dan jadwal treatment.
+            </p>
+          </div>
+          <div className="border border-dark bg-white">
+            <BookingWizard />
+          </div>
+        </FadeIn>
+      </section>
+
     </div>
   );
 }
