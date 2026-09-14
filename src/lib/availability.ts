@@ -3,13 +3,13 @@ import { ARTISTS } from './data';
 
 const OPENING_HOURS = {
   // 1 = Monday, 7 = Sunday
-  1: { start: 12, end: 21 },
-  2: { start: 12, end: 21 },
-  3: { start: 12, end: 21 },
-  4: { start: 12, end: 21 },
-  5: { start: 13, end: 21 }, // Friday
-  6: { start: 12, end: 21 },
-  7: { start: 12, end: 21 },
+  1: { start: 10, end: 22 },
+  2: { start: 10, end: 22 },
+  3: { start: 10, end: 22 },
+  4: { start: 10, end: 22 },
+  5: { start: 10, end: 22 },
+  6: { start: 10, end: 22 },
+  7: { start: 10, end: 22 },
 };
 
 export async function generateAvailableSlots(artistId: string, dateStr: string, durationMinutes: number) {

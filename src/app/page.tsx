@@ -46,7 +46,7 @@ export default function Home() {
         <div className="mt-4 flex flex-col items-center gap-2 text-xs text-black tracking-widest font-medium uppercase">
           <p className="font-semibold text-black">Eyelash <span className="mx-2 text-nanata-pink">•</span> Nail Art <span className="mx-2 text-nanata-pink">•</span> Hair</p>
           <p className="text-xs text-black mt-2">Jl. Caman Raya No.11, Bekasi 17412</p>
-          <p className="text-xs text-black">Open 10.00 - 21.00 (Everyday)</p>
+          <p className="text-xs text-black">Open 10.00 - 22.00 (Everyday)</p>
         </div>
       </div>
 
