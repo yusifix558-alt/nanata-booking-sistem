@@ -3,39 +3,37 @@
 with open(r'c:\Users\Windows\Videos\NAIL ART WEBSITE\src\app\page.tsx', 'r', encoding='utf-8') as f:
     content = f.read()
 
-# 1. Remove FadeIn import
-content = re.sub(r'import FadeIn from "@/components/FadeIn";\n', '', content)
+# 1. Clean Background & Blobs
+content = re.sub(r'\{\/\* Colorful Holographic Blobs \*\/}.*?<\/div>\s*<\/div>', '', content, flags=re.DOTALL)
+content = content.replace('bg-[#fdfcfb]', 'bg-[#FFF7F9]')
 
-# 2. Remove FadeIn tags but keep children
-# Since FadeIn had no custom props in this file, we can just replace <FadeIn> and </FadeIn>
-content = re.sub(r'<FadeIn[^>]*>', '', content)
-content = content.replace('</FadeIn>', '')
+# 2. Fix Logo (crop to circle, remove mix-blend)
+content = re.sub(
+    r'<div className="relative w-44 h-44 mb-2">\s*<Image src="\/logo.jpg" alt="Nanata Studio Logo" fill className="object-contain mix-blend-multiply" priority \/>\s*<\/div>',
+    r'<div className="relative w-32 h-32 mb-6 rounded-full overflow-hidden shadow-sm border-[3px] border-white">\n           <Image src="/logo.jpg" alt="Nanata Studio Logo" fill className="object-cover" priority />\n        </div>',
+    content
+)
 
-# 3. Remove animations
-content = content.replace('animate-in fade-in zoom-in-95 duration-300', '')
-content = content.replace('animate-in fade-in duration-500', '')
+# 3. Update Buttons (Solid feminine colors, rounded-full, better spacing)
+content = re.sub(
+    r'className="w-full bg-gradient-to-r from-\[#ff7eb3\] to-\[#b473f5\] text-white rounded-2xl py-4 text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"',
+    r'className="w-full bg-[#E8A0BF] text-white rounded-full py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#d98bb0] transition-colors shadow-md"',
+    content
+)
 
-# 4. Replace Brand section with Logo image
-brand_regex = re.compile(r'\{\/\* Top \/ Brand \*\/\}.*?\{\/\* BIO SECTION \*\/\}', re.DOTALL)
+content = re.sub(
+    r'className="w-full bg-white\/50 backdrop-blur-xl border border-white\/80 text-dark rounded-2xl py-4 text-xs font-bold uppercase tracking-widest text-center hover:bg-white\/90 hover:border-white transition-all shadow-sm hover:shadow-md"',
+    r'className="w-full bg-white border border-[#E8A0BF]/20 text-slate-700 rounded-full py-4 text-xs font-bold uppercase tracking-widest text-center hover:border-[#E8A0BF] hover:text-[#E8A0BF] transition-colors shadow-sm"',
+    content
+)
 
-new_brand = '''{/* Top / Brand */}
-      <div className="flex flex-col items-center mt-6 text-center">
-        <div className="relative w-40 h-40 md:w-48 md:h-48 mb-4">
-           <Image src="/logo.jpg" alt="Nanata Studio Logo" fill className="object-contain" priority />
-        </div>
-        
-        {/* BIO SECTION */}'''
-
-content = brand_regex.sub(new_brand, content)
-
-# 5. Clean up typography - make buttons use font-sans, text-xs
-# The fonts are already Jost (sans), let's ensure consistency
-content = content.replace('font-editorial text-4xl', 'text-2xl') # in booking wizard header
-content = content.replace('font-editorial text-5xl', 'text-3xl') # unused now due to brand removal
-content = content.replace('italic text-nanata-pink', 'text-nanata-pink font-semibold')
-content = content.replace('text-[11px] font-bold uppercase tracking-[0.2em]', 'text-xs font-semibold uppercase tracking-widest')
-content = content.replace('text-[10px] uppercase tracking-widest flex items-center gap-2', 'text-xs uppercase tracking-widest font-semibold flex items-center gap-2')
-content = content.replace('text-[9px] text-dark/40 uppercase tracking-widest', 'text-[10px] text-dark/40 uppercase tracking-widest')
+# 4. Spacing and Typography fixes in page.tsx
+content = content.replace('gap-3.5 mt-10', 'gap-4 mt-8') # increase button gap slightly
+content = content.replace('text-[10px] opacity-80 mt-1', 'text-xs text-slate-500 mt-2')
+content = content.replace('text-[10px] opacity-80', 'text-xs text-slate-500')
+content = content.replace('text-dark/70', 'text-slate-600')
+content = content.replace('text-dark', 'text-slate-800')
+content = content.replace('font-semibold text-dark', 'font-bold text-slate-800 text-sm')
 
 with open(r'c:\Users\Windows\Videos\NAIL ART WEBSITE\src\app\page.tsx', 'w', encoding='utf-8') as f:
     f.write(content)

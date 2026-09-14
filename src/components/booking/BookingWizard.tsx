@@ -207,14 +207,14 @@ export default function BookingWizard() {
     };
 
     return (
-      <div className="max-w-2xl mx-auto bg-paper p-8 md:p-12 shadow-sm border border-[#b473f5]/5">
+      <div className="max-w-2xl mx-auto bg-paper p-8 md:p-12 shadow-sm border border-[#E8A0BF]/5">
         <div className="flex justify-center mb-6">
           <CheckCircle2 className="w-16 h-16 text-slate-800" strokeWidth={1} />
         </div>
         <h2 className="text-center  text-3xl font-bold text-slate-800 mb-2">BOOKING BERHASIL!</h2>
         <p className="text-center text-slate-800/70 mb-10">Sampai jumpa di REAL.CO!</p>
 
-        <div className="border-t border-b border-[#b473f5]/10 py-6 mb-10 space-y-4">
+        <div className="border-t border-b border-slate-200 py-6 mb-10 space-y-4">
           <div className="flex justify-between">
             <span className="text-slate-800/60 text-sm font-medium tracking-widest">TREATMENT</span>
             <span className="text-slate-800 font-medium">{service?.name}</span>
@@ -231,7 +231,7 @@ export default function BookingWizard() {
             <span className="text-slate-800/60 text-sm font-medium tracking-widest">WAKTU</span>
             <span className="text-slate-800 font-medium">{state.time}</span>
           </div>
-          <div className="flex justify-between pt-4 border-t border-[#b473f5]/5">
+          <div className="flex justify-between pt-4 border-t border-[#E8A0BF]/5">
             <span className="text-slate-800/60 text-sm font-medium tracking-widest">TOTAL</span>
             <span className="text-slate-800 font-bold text-lg">{artist?.priceLabel}</span>
           </div>
@@ -244,10 +244,10 @@ export default function BookingWizard() {
         </div>
 
         <div className="space-y-4">
-          <button onClick={handleAddToCalendar} className="w-full bg-gradient-to-r from-[#ff7eb3] to-[#b473f5] text-white py-4 text-sm font-medium tracking-widest hover:bg-[#b473f5] transition-colors flex items-center justify-center gap-2">
+          <button onClick={handleAddToCalendar} className="w-full bg-[#E8A0BF] text-white py-4 text-sm font-medium tracking-widest hover:bg-[#E8A0BF] transition-colors flex items-center justify-center gap-2">
             <Calendar className="w-4 h-4" /> TAMBAH KE GOOGLE CALENDAR
           </button>
-          <button onClick={handleWhatsApp} className="w-full border border-[#b473f5] text-slate-800 py-4 text-sm font-medium tracking-widest hover:bg-[#b473f5]/5 transition-colors">
+          <button onClick={handleWhatsApp} className="w-full border border-[#E8A0BF] text-slate-800 py-4 text-sm font-medium tracking-widest hover:bg-[#FFF7F9] transition-colors">
             CHAT VIA WHATSAPP
           </button>
         </div>
@@ -262,11 +262,11 @@ export default function BookingWizard() {
         <div className="flex items-center justify-between text-[10px] sm:text-xs font-medium tracking-widest mb-3 sm:mb-4 px-2 sm:px-0">
           {[1, 2, 3].map((stepNumber) => (
             <div key={stepNumber} className={`flex items-center ${stepNumber !== 5 ? 'w-full' : ''}`}>
-              <div className={`w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full border ${state.step === stepNumber ? 'bg-gradient-to-r from-[#ff7eb3] to-[#b473f5] text-white border-[#b473f5]' : state.step > stepNumber ? 'bg-[#b473f5]/10 border-[#b473f5]/10 text-slate-800' : 'bg-transparent border-[#b473f5]/20 text-slate-800/40'}`}>
+              <div className={`w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full border ${state.step === stepNumber ? 'bg-[#E8A0BF] text-white border-[#E8A0BF]' : state.step > stepNumber ? 'bg-[#E8A0BF]/10 border-slate-200 text-slate-800' : 'bg-transparent border-[#E8A0BF]/20 text-slate-800/40'}`}>
                 {stepNumber}
               </div>
               {stepNumber !== 5 && (
-                <div className={`flex-1 h-px mx-1 sm:mx-2 ${state.step > stepNumber ? 'bg-[#b473f5]/20' : 'bg-[#b473f5]/10'}`}></div>
+                <div className={`flex-1 h-px mx-1 sm:mx-2 ${state.step > stepNumber ? 'bg-[#E8A0BF]/20' : 'bg-[#E8A0BF]/10'}`}></div>
               )}
             </div>
           ))}
@@ -281,21 +281,21 @@ export default function BookingWizard() {
       </div>
 
       {/* Main Content Area */}
-      <div className="bg-white py-4 sm:py-6 md:py-10 min-h-[300px] sm:min-h-[400px]">
+      <div className="bg-white py-6 sm:py-8 md:py-10 px-2 sm:px-4 min-h-[300px] sm:min-h-[400px]">
         {/* STEP 1: SERVICE */}
         {state.step === 1 && (
           <div className="space-y-3 sm:space-y-4">
             <p className="text-slate-800/70 mb-4 sm:mb-6 text-xs sm:text-base">Pilih TREATMENT yang sesuai dengan kebutuhanmu.</p>
             {SERVICES.map((service) => (
-              <label key={service.id} className={`block relative border p-4 sm:p-6 cursor-pointer transition-all ${state.serviceId === service.id ? 'border-[#b473f5] bg-[#b473f5]/5' : 'border-[#b473f5]/10 hover:border-[#b473f5]/30'}`}>
+              <label key={service.id} className={`block relative border p-5 sm:p-6 rounded-xl mb-3 cursor-pointer transition-all ${state.serviceId === service.id ? 'border-[#E8A0BF] bg-[#FFF7F9]' : 'border-slate-200 hover:border-[#E8A0BF]/40'}`}>
                 <input type="radio" name="service" value={service.id} checked={state.serviceId === service.id} onChange={() => updateState({ serviceId: service.id })} className="sr-only" />
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className=" text-base sm:text-xl font-bold text-slate-800 tracking-tight">{service.name}</h3>
+                    <h3 className=" text-sm font-semibold text-slate-800 ">{service.name}</h3>
                     <p className="text-slate-800/70 text-xs sm:text-sm mt-1">{service.priceLabel}</p>
                   </div>
-                  <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border flex items-center justify-center ${state.serviceId === service.id ? 'border-[#b473f5]' : 'border-[#b473f5]/20'}`}>
-                    {state.serviceId === service.id && <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#b473f5] rounded-full"></div>}
+                  <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border flex items-center justify-center ${state.serviceId === service.id ? 'border-[#E8A0BF]' : 'border-[#E8A0BF]/20'}`}>
+                    {state.serviceId === service.id && <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#E8A0BF] rounded-full"></div>}
                   </div>
                 </div>
               </label>
@@ -310,11 +310,11 @@ export default function BookingWizard() {
                 <label className="block text-sm font-medium tracking-widest text-slate-800/70 mb-3">PILIH TANGGAL</label>
                 <div className="bg-transparent py-4 sm:py-6">
                   <div className="flex justify-between items-center mb-6">
-                    <button onClick={handlePrevMonth} className="p-2 hover:bg-[#b473f5]/5 text-slate-800 transition-colors rounded-full"><ChevronLeft className="w-5 h-5" /></button>
-                    <div className=" text-xl font-bold text-slate-800 tracking-tight">
+                    <button onClick={handlePrevMonth} className="p-2 hover:bg-[#FFF7F9] text-slate-800 transition-colors rounded-full"><ChevronLeft className="w-5 h-5" /></button>
+                    <div className=" text-xl font-bold text-slate-800 ">
                       {monthsIndo[currentMonth.getMonth()]} {currentMonth.getFullYear()}
                     </div>
-                    <button onClick={handleNextMonth} className="p-2 hover:bg-[#b473f5]/5 text-slate-800 transition-colors rounded-full"><ChevronRight className="w-5 h-5" /></button>
+                    <button onClick={handleNextMonth} className="p-2 hover:bg-[#FFF7F9] text-slate-800 transition-colors rounded-full"><ChevronRight className="w-5 h-5" /></button>
                   </div>
                   <div className="grid grid-cols-7 gap-1 text-center mb-3">
                     {daysIndo.map(day => (
@@ -339,10 +339,10 @@ export default function BookingWizard() {
                           key={i}
                           disabled={isPast}
                           onClick={() => updateState({ date: dateStr, time: null })}
-                          className={`h-10 w-full text-sm sm:text-base font-medium flex items-center justify-center transition-all ${
-                            isSelected ? 'bg-gradient-to-r from-[#ff7eb3] to-[#b473f5] text-white shadow-md font-bold' : 
+                          className={`h-10 w-full text-sm font-medium flex items-center justify-center transition-all rounded-full ${
+                            isSelected ? 'bg-[#E8A0BF] text-white shadow-sm font-bold' : 
                             isPast ? 'text-slate-800/20 cursor-not-allowed' : 
-                            'text-slate-800 hover:bg-[#b473f5]/5 cursor-pointer hover:text-nanata-pink'
+                            'text-slate-800 hover:bg-[#FFF7F9] cursor-pointer hover:text-nanata-pink'
                           }`}
                         >
                           {date.getDate()}
@@ -397,10 +397,10 @@ export default function BookingWizard() {
                         onClick={() => updateState({ time: slot.time })}
                         className={`py-4 border text-center transition-all ${
                           !slot.available 
-                            ? 'bg-[#b473f5]/5 border-[#b473f5]/5 text-slate-800/30 cursor-not-allowed line-through' 
+                            ? 'bg-[#FFF7F9] border-[#E8A0BF]/5 text-slate-800/30 cursor-not-allowed line-through' 
                             : state.time === slot.time 
-                              ? 'bg-gradient-to-r from-[#ff7eb3] to-[#b473f5] text-white border-[#b473f5]' 
-                              : 'bg-transparent border-[#b473f5]/20 text-slate-800 hover:border-[#b473f5]/50'
+                              ? 'bg-[#E8A0BF] text-white border-[#E8A0BF]' 
+                              : 'bg-transparent border-[#E8A0BF]/20 text-slate-800 hover:border-[#E8A0BF]/50'
                         }`}
                       >
                         <span className="block font-medium">{slot.time}</span>
@@ -426,7 +426,7 @@ export default function BookingWizard() {
                 type="text" 
                 value={state.customer.name}
                 onChange={(e) => updateState({ customer: { ...state.customer, name: e.target.value } })}
-                className="w-full border-b border-[#b473f5]/20 py-3 font-sans text-slate-800 focus:border-[#b473f5] focus:outline-none bg-transparent"
+                className="w-full border border-slate-200 rounded-lg px-4 py-3 font-sans text-sm text-slate-800 focus:border-[#E8A0BF] focus:ring-1 focus:ring-[#E8A0BF] focus:outline-none bg-white"
                 placeholder="Masukkan nama lengkap"
               />
             </div>
@@ -437,7 +437,7 @@ export default function BookingWizard() {
                 type="tel" 
                 value={state.customer.whatsapp}
                 onChange={(e) => updateState({ customer: { ...state.customer, whatsapp: e.target.value } })}
-                className="w-full border-b border-[#b473f5]/20 py-3 font-sans text-slate-800 focus:border-[#b473f5] focus:outline-none bg-transparent"
+                className="w-full border border-slate-200 rounded-lg px-4 py-3 font-sans text-sm text-slate-800 focus:border-[#E8A0BF] focus:ring-1 focus:ring-[#E8A0BF] focus:outline-none bg-white"
                 placeholder="Contoh: 08123456789"
               />
             </div>
@@ -448,7 +448,7 @@ export default function BookingWizard() {
                 type="email" 
                 value={state.customer.email}
                 onChange={(e) => updateState({ customer: { ...state.customer, email: e.target.value } })}
-                className="w-full border-b border-[#b473f5]/20 py-3 font-sans text-slate-800 focus:border-[#b473f5] focus:outline-none bg-transparent"
+                className="w-full border border-slate-200 rounded-lg px-4 py-3 font-sans text-sm text-slate-800 focus:border-[#E8A0BF] focus:ring-1 focus:ring-[#E8A0BF] focus:outline-none bg-white"
                 placeholder="Untuk calendar invitation"
               />
             </div>
@@ -458,7 +458,7 @@ export default function BookingWizard() {
                 id="customer-notes"
                 value={state.customer.notes}
                 onChange={(e) => updateState({ customer: { ...state.customer, notes: e.target.value } })}
-                className="w-full border-b border-[#b473f5]/20 py-3 font-sans text-slate-800 focus:border-[#b473f5] focus:outline-none bg-transparent resize-none h-24 text-sm"
+                className="w-full border border-slate-200 rounded-lg px-4 py-3 font-sans text-sm text-slate-800 focus:border-[#E8A0BF] focus:ring-1 focus:ring-[#E8A0BF] focus:outline-none bg-white resize-none h-24"
                 placeholder="Tuliskan model rambut atau request khusus yang kamu inginkan..."
                 maxLength={500}
               />
@@ -478,7 +478,7 @@ export default function BookingWizard() {
               </div>
             )}
 
-            <div className="space-y-4 bg-paper p-6 border border-[#b473f5]/5">
+            <div className="space-y-4 bg-paper p-6 border border-[#E8A0BF]/5">
               <div className="flex justify-between items-center">
                 <span className="text-slate-800/60 text-[10px] font-bold tracking-[0.2em] uppercase">TREATMENT</span>
                 <span className="text-slate-800 font-medium text-sm">{SERVICES.find(s => s.id === state.serviceId)?.name}</span>
@@ -495,7 +495,7 @@ export default function BookingWizard() {
                 <span className="text-slate-800/60 text-[10px] font-bold tracking-[0.2em] uppercase">WAKTU</span>
                 <span className="text-slate-800 font-medium text-sm">{state.time}</span>
               </div>
-              <div className="flex justify-between items-center pt-4 border-t border-[#b473f5]/10">
+              <div className="flex justify-between items-center pt-4 border-t border-slate-200">
                 <span className="text-slate-800/60 text-[10px] font-bold tracking-[0.2em] uppercase">TOTAL</span>
                 <span className="text-slate-800 font-bold text-sm">{ARTISTS.find(b => b.id === state.artistId)?.priceLabel}</span>
               </div>
@@ -518,7 +518,7 @@ export default function BookingWizard() {
                 <div className="relative flex items-center justify-center mt-0.5">
                   <input 
                     type="checkbox" 
-                    className="peer appearance-none w-5 h-5 border-2 border-[#b473f5]/40 checked:bg-[#b473f5] checked:border-[#b473f5] transition-colors cursor-pointer"
+                    className="peer appearance-none w-5 h-5 border-2 border-[#E8A0BF]/40 checked:bg-[#E8A0BF] checked:border-[#E8A0BF] transition-colors cursor-pointer"
                     onChange={(e) => updateState({ ...state, termsAccepted: e.target.checked })}
                   />
                   <svg className="absolute w-3 h-3 text-paper opacity-0 peer-checked:opacity-100 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -540,7 +540,7 @@ export default function BookingWizard() {
         {state.step > 1 && (
           <button 
             onClick={prevStep}
-            className="border border-[#b473f5]/20 text-slate-800 px-6 py-3 sm:px-10 sm:py-4 text-[10px] font-bold tracking-[0.15em] hover:bg-[#b473f5]/5 transition-colors flex items-center justify-center uppercase w-full md:w-auto"
+            className="border border-[#E8A0BF]/20 text-slate-800 px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] hover:bg-slate-50 rounded-full transition-colors flex items-center justify-center uppercase w-full md:w-auto"
           >
             KEMBALI
           </button>
@@ -554,7 +554,7 @@ export default function BookingWizard() {
               (state.step === 2 && (!state.date || !state.time)) ||
               (state.step === 3 && (!state.customer.name.trim() || !state.customer.whatsapp.trim()))
             }
-            className="bg-gradient-to-r from-[#ff7eb3] to-[#b473f5] text-white px-6 py-3 sm:px-10 sm:py-4 text-[10px] font-bold tracking-[0.15em] hover:bg-[#b473f5]/90 disabled:bg-[#b473f5]/20 disabled:text-slate-800/50 transition-colors flex items-center w-full md:w-auto justify-center uppercase"
+            className="bg-[#E8A0BF] text-white px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] rounded-full hover:opacity-90 disabled:opacity-50 transition-opacity flex items-center w-full md:w-auto justify-center uppercase"
           >
             LANJUT <ArrowRight className="ml-2 w-4 h-4" />
           </button>
@@ -562,7 +562,7 @@ export default function BookingWizard() {
           <button 
             onClick={handleConfirm}
             disabled={isSubmitting || !state.termsAccepted}
-            className="bg-gradient-to-r from-[#ff7eb3] to-[#b473f5] text-white px-6 py-3 sm:px-10 sm:py-4 text-[10px] font-bold tracking-[0.15em] hover:bg-paper disabled:bg-[#b473f5]/10 disabled:text-slate-800/40 transition-colors w-full md:w-auto flex items-center justify-center uppercase"
+            className="bg-[#E8A0BF] text-white px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] rounded-full hover:opacity-90 disabled:opacity-50 transition-opacity w-full md:w-auto flex items-center justify-center uppercase"
           >
             {isSubmitting ? (
               <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> MEMPROSES...</>
