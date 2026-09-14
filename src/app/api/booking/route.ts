@@ -167,7 +167,7 @@ ${data.customer.notes ? `\nNotes: ${data.customer.notes}` : ''}`,
     }
 
     return NextResponse.json({ 
-      error: Booking belum berhasil dibuat. (Error: ) 
+      error: `Booking belum berhasil dibuat. (Error: ${err.message})` 
     }, { status: 500 });
   }
 }
