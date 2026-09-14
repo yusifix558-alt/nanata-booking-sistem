@@ -13,15 +13,15 @@ export default function Home() {
       <div className="min-h-screen bg-paper flex flex-col items-center pt-8 px-4 pb-12 ">
         <button 
           onClick={() => setShowBooking(false)} 
-          className="self-start mb-6 text-slate-800 font-bold text-xs uppercase tracking-widest font-semibold flex items-center gap-2 hover:text-nanata-pink transition-colors"
+          className="self-start mb-6 text-black font-bold text-xs uppercase tracking-widest font-semibold flex items-center gap-2 hover:text-nanata-pink transition-colors"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
           Kembali
         </button>
         <div className="w-full max-w-[400px]">
           <div className="mb-8 text-center">
-            <h2 className="text-2xl font-bold text-slate-800 mb-2">Reservation.</h2>
-            <p className="text-[10px] uppercase tracking-widest text-slate-800/70">Pilih artist & jadwal</p>
+            <h2 className="text-2xl font-bold text-black mb-2">Reservation.</h2>
+            
           </div>
           <div className="bg-white w-full shadow-xl rounded-xl overflow-hidden border border-dark/5">
             <BookingWizard />
@@ -33,7 +33,7 @@ export default function Home() {
 
   // Tampilan utama Link-in-Bio ala Memoji Studio
   return (
-    <div className="min-h-screen relative bg-[#FFF7F9] text-slate-800 flex flex-col items-center justify-between py-12 px-6 overflow-hidden">
+    <div className="min-h-screen relative bg-[#FFF7F9] text-black flex flex-col items-center justify-between py-12 px-6 overflow-hidden">
       
       
       
@@ -43,10 +43,10 @@ export default function Home() {
            <Image src="/logo.jpg" alt="Nanata Studio Logo" fill className="object-cover" priority />
         </div>
         
-        <div className="mt-4 flex flex-col items-center gap-2 text-xs text-slate-800/70 tracking-widest font-medium uppercase">
-          <p className="font-semibold text-slate-800">Eyelash <span className="mx-2 text-nanata-pink">•</span> Nail Art <span className="mx-2 text-nanata-pink">•</span> Hair</p>
-          <p className="text-xs text-slate-500 mt-2">Jl. Caman Raya No.11, Bekasi 17412</p>
-          <p className="text-xs text-slate-500">Open 10.00 - 21.00 (Everyday)</p>
+        <div className="mt-4 flex flex-col items-center gap-2 text-xs text-black tracking-widest font-medium uppercase">
+          <p className="font-semibold text-black">Eyelash <span className="mx-2 text-nanata-pink">•</span> Nail Art <span className="mx-2 text-nanata-pink">•</span> Hair</p>
+          <p className="text-xs text-black mt-2">Jl. Caman Raya No.11, Bekasi 17412</p>
+          <p className="text-xs text-black">Open 10.00 - 21.00 (Everyday)</p>
         </div>
       </div>
 
@@ -63,7 +63,7 @@ export default function Home() {
           href="https://wa.me/6285283120151" 
           target="_blank" 
           rel="noreferrer" 
-          className="w-full bg-white border border-[#E8A0BF]/20 text-slate-700 rounded-full py-4 text-xs font-bold uppercase tracking-widest text-center hover:border-[#E8A0BF] hover:text-[#E8A0BF] transition-colors shadow-sm"
+          className="w-full bg-white border border-[#E8A0BF]/20 text-black rounded-full py-4 text-xs font-bold uppercase tracking-widest text-center hover:border-[#E8A0BF] hover:text-[#E8A0BF] transition-colors shadow-sm"
         >
           WhatsApp
         </a>
@@ -72,7 +72,7 @@ export default function Home() {
           href="https://maps.app.goo.gl/iuF843vMhZYGH1YG9" 
           target="_blank" 
           rel="noreferrer" 
-          className="w-full bg-white border border-[#E8A0BF]/20 text-slate-700 rounded-full py-4 text-xs font-bold uppercase tracking-widest text-center hover:border-[#E8A0BF] hover:text-[#E8A0BF] transition-colors shadow-sm"
+          className="w-full bg-white border border-[#E8A0BF]/20 text-black rounded-full py-4 text-xs font-bold uppercase tracking-widest text-center hover:border-[#E8A0BF] hover:text-[#E8A0BF] transition-colors shadow-sm"
         >
           Google Maps
         </a>
@@ -81,14 +81,14 @@ export default function Home() {
           href="https://www.instagram.com/nanata.studio" 
           target="_blank" 
           rel="noreferrer" 
-          className="w-full bg-white border border-[#E8A0BF]/20 text-slate-700 rounded-full py-4 text-xs font-bold uppercase tracking-widest text-center hover:border-[#E8A0BF] hover:text-[#E8A0BF] transition-colors shadow-sm"
+          className="w-full bg-white border border-[#E8A0BF]/20 text-black rounded-full py-4 text-xs font-bold uppercase tracking-widest text-center hover:border-[#E8A0BF] hover:text-[#E8A0BF] transition-colors shadow-sm"
         >
           Instagram
         </a>
       </div>
 
       {/* Footer text */}
-      <div className="text-[10px] text-slate-800/30 uppercase tracking-widest mt-12 z-10">
+      <div className="text-[10px] text-black uppercase tracking-widest mt-12 z-10">
         copyright &copy; 2026 nanata studio
       </div>
     </div>
