@@ -3,13 +3,13 @@ import { z } from 'zod';
 import { appendBookingToSheet } from '@/lib/googleSheets';
 import { generateAvailableSlots } from '@/lib/availability';
 import { createEvent, EventInput } from '@/lib/googleCalendar';
-import { SERVICES, BARBERS } from '@/lib/data';
+import { SERVICES, artistS } from '@/lib/data';
 
 export const dynamic = 'force-dynamic';
 
 const bookingSchema = z.object({
   serviceId: z.string().min(1),
-  barberId: z.string().min(1),
+  artistId: z.string().min(1),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid date format"),
   time: z.string().regex(/^\d{2}:\d{2}$/, "Invalid time format"),
   customer: z.object({
@@ -37,18 +37,18 @@ export async function POST(request: Request) {
     }
     const data = parseResult.data;
 
-    // 2. Validate Service and Barber (Get details from static data)
+    // 2. Validate Service and artist (Get details from static data)
     const service = SERVICES.find(s => s.id === data.serviceId);
-    const barber = BARBERS.find(b => b.id === data.barberId);
+    const artist = artistS.find(b => b.id === data.artistId);
 
-    if (!service || !barber) {
-      return NextResponse.json({ error: 'Layanan atau Barber tidak ditemukan.' }, { status: 404 });
+    if (!service || !artist) {
+      return NextResponse.json({ error: 'Layanan atau artist tidak ditemukan.' }, { status: 404 });
     }
 
-    calendarId = (barber as { calendar_id?: string }).calendar_id || process.env.GOOGLE_CALENDAR_ID || 'primary';
+    calendarId = (artist as { calendar_id?: string }).calendar_id || process.env.GOOGLE_CALENDAR_ID || 'primary';
 
     // 3. Server Recheck - Validate Date/Time
-    const slots = await generateAvailableSlots(data.barberId, data.date, service.duration);
+    const slots = await generateAvailableSlots(data.artistId, data.date, service.duration);
     const requestedSlot = slots.find(s => s.time === data.time);
     
     if (!requestedSlot || !requestedSlot.available) {
@@ -64,13 +64,13 @@ export async function POST(request: Request) {
 
     // 4. Create Google Calendar Event
     const eventParams: EventInput = {
-      summary: `REAL.CO — ${service.name}`,
+      summary: `Namata Studio — ${service.name}`,
       description: `Customer: ${data.customer.name}
 WhatsApp: ${data.customer.whatsapp}
-Barber: ${barber.name}
+artist: ${artist.name}
 Service: ${service.name}
 Duration: ${service.duration} min
-Price: Rp ${barber.price}
+Price: Rp ${artist.price}
 Booking ID: ${bookingCode}
 ${data.customer.notes ? `\nNotes: ${data.customer.notes}` : ''}`,
       start: { dateTime: startTime.toISOString() },
@@ -98,10 +98,10 @@ ${data.customer.notes ? `\nNotes: ${data.customer.notes}` : ''}`,
       customerName: data.customer.name,
       customerWhatsapp: data.customer.whatsapp,
       serviceName: service.name,
-      barberName: barber.name,
+      artistName: artist.name,
       date: data.date,
       time: data.time,
-      price: barber.price
+      price: artist.price
     });
 
     // 6. Owner Notification (Email)
@@ -124,7 +124,7 @@ ${data.customer.notes ? `\nNotes: ${data.customer.notes}` : ''}`,
               <h2>Booking Baru Masuk!</h2>
               <p><strong>Booking ID:</strong> ${bookingCode}</p>
               <p><strong>Layanan:</strong> ${service.name}</p>
-              <p><strong>Barber:</strong> ${barber.name}</p>
+              <p><strong>artist:</strong> ${artist.name}</p>
               <p><strong>Waktu:</strong> ${data.date} ${data.time}</p>
               <br/>
               <p><strong>Customer:</strong> ${data.customer.name}</p>

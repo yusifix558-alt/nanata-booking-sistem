@@ -7,18 +7,18 @@ export const revalidate = 0;
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const barberId = searchParams.get('barberId');
+    const artistId = searchParams.get('artistId');
     const date = searchParams.get('date');
     const durationStr = searchParams.get('duration');
 
-    if (!barberId || !date || !durationStr) {
+    if (!artistId || !date || !durationStr) {
       return NextResponse.json({ error: 'Missing required parameters' }, { status: 400 });
     }
 
     const duration = parseInt(durationStr, 10);
     
     // Check credentials logic removed so we can use mocks if env is missing
-    const slots = await generateAvailableSlots(barberId, date, duration);
+    const slots = await generateAvailableSlots(artistId, date, duration);
 
     return NextResponse.json({ slots });
   } catch (error) {
