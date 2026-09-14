@@ -258,8 +258,8 @@ export default function BookingWizard() {
   return (
     <div className="max-w-3xl mx-auto ">
       {/* Step Indicator */}
-      <div className="mb-10 sm:mb-16 mt-6">
-        <div className="flex items-center justify-between text-[10px] sm:text-xs font-medium tracking-widest mb-8 px-4 sm:px-8">
+      <div className="mb-6 mt-6">
+        <div className="flex items-center justify-between text-[10px] sm:text-xs font-medium tracking-widest mb-6 px-4 sm:px-8">
           {[1, 2, 3].map((stepNumber) => (
             <div key={stepNumber} className={`flex items-center ${stepNumber !== 3 ? 'w-full' : ''}`}>
               <div className={`w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full border ${state.step === stepNumber ? 'bg-[#E8A0BF] text-white border-[#E8A0BF]' : state.step > stepNumber ? 'bg-[#E8A0BF]/10 border-slate-200 text-black' : 'bg-transparent border-[#E8A0BF]/20 text-black'}`}>
@@ -271,7 +271,7 @@ export default function BookingWizard() {
             </div>
           ))}
         </div>
-        <div className="text-center text-xs sm:text-sm font-bold tracking-widest text-black">
+        <div className="text-center text-sm sm:text-base font-bold tracking-widest text-black">
           {state.step === 1 && "01 PILIH TREATMENT"}
           
           {state.step === 2 && "02 TANGGAL & WAKTU"}
@@ -536,7 +536,7 @@ export default function BookingWizard() {
       </div>
 
       {/* Navigation Footer */}
-      <div className={`pt-6 sm:pt-8 mt-10 sm:mt-12 border-t border-slate-200 flex flex-col-reverse md:flex-row gap-4 ${state.step > 1 ? 'justify-between' : 'justify-end'}`}>
+      <div className={`pt-6 sm:pt-8 pb-8 px-4 sm:px-8 border-t border-slate-200 flex flex-col-reverse md:flex-row gap-4 mt-6 ${state.step > 1 ? 'justify-between' : 'justify-end'}`}>
         {state.step > 1 && (
           <button 
             onClick={prevStep}
