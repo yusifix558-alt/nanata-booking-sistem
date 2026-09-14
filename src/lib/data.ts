@@ -1,7 +1,12 @@
 export const SERVICES = [
-  { id: 'S1', name: 'NAIL ART', price: 75000, duration: 90, priceLabel: 'Start from Rp 75.000' },
-  { id: 'S2', name: 'EYELASH EXTENSION', price: 120000, duration: 120, priceLabel: 'Start from Rp 120.000' },
-  { id: 'S3', name: 'MANICURE & PEDICURE', price: 90000, duration: 60, priceLabel: 'Rp 90.000' },
+  { id: 'S1', name: 'Nail Art - Basic (Polos 1-2 Warna)', price: 75000, duration: 60, priceLabel: 'Rp 75.000' },
+  { id: 'S2', name: 'Nail Art - Premium (Cat Eye/Chrome/Ombre)', price: 120000, duration: 90, priceLabel: 'Rp 120.000' },
+  { id: 'S3', name: 'Nail Art - Custom Design / 3D', price: 180000, duration: 120, priceLabel: 'Start from Rp 180.000' },
+  { id: 'S4', name: 'Eyelash - Classic', price: 120000, duration: 90, priceLabel: 'Rp 120.000' },
+  { id: 'S5', name: 'Eyelash - Double Volume', price: 170000, duration: 120, priceLabel: 'Rp 170.000' },
+  { id: 'S6', name: 'Eyelash - Megavolume', price: 220000, duration: 150, priceLabel: 'Rp 220.000' },
+  { id: 'S7', name: 'Manicure & Pedicure Spa', price: 150000, duration: 90, priceLabel: 'Rp 150.000' },
+  { id: 'S8', name: 'Nail / Eyelash Removal', price: 30000, duration: 30, priceLabel: 'Rp 30.000' },
 ];
 
 export const ARTISTS = [
