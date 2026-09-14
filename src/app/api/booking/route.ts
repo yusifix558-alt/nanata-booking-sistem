@@ -39,10 +39,13 @@ export async function POST(request: Request) {
 
     // 2. Validate Service and artist (Get details from static data)
     const service = SERVICES.find(s => s.id === data.serviceId);
-    const artist = ARTISTS.find(b => b.id === data.artistId);
-
-    if (!service || !artist) {
-      return NextResponse.json({ error: 'Layanan atau artist tidak ditemukan.' }, { status: 404 });
+    if (!service) {
+      return NextResponse.json({ error: 'Layanan tidak ditemukan.' }, { status: 404 });
+    }
+    
+    const artist = data.artistId === 'Studio' ? { name: 'Studio', price: service.price, priceLabel: service.priceLabel } : ARTISTS.find(b => b.id === data.artistId);
+    if (!artist) {
+      return NextResponse.json({ error: 'Artist tidak ditemukan.' }, { status: 404 });
     }
 
     calendarId = (artist as { calendar_id?: string }).calendar_id || process.env.GOOGLE_CALENDAR_ID || 'primary';
@@ -70,7 +73,7 @@ WhatsApp: ${data.customer.whatsapp}
 artist: ${artist.name}
 Service: ${service.name}
 Duration: ${service.duration} min
-Price: Rp ${artist.price}
+Price: ${artist.price}
 Booking ID: ${bookingCode}
 ${data.customer.notes ? `\nNotes: ${data.customer.notes}` : ''}`,
       start: { dateTime: startTime.toISOString() },
@@ -101,7 +104,7 @@ ${data.customer.notes ? `\nNotes: ${data.customer.notes}` : ''}`,
       artistName: artist.name,
       date: data.date,
       time: data.time,
-      price: artist.price
+      price: service.price
     });
 
     // 6. Owner Notification (Email)

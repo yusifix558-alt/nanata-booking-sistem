@@ -233,7 +233,7 @@ export default function BookingWizard() {
           </div>
           <div className="flex justify-between pt-4 border-t border-[#E8A0BF]/5">
             <span className="text-black text-sm font-medium tracking-widest">TOTAL</span>
-            <span className="text-black font-bold text-lg">{artist?.priceLabel}</span>
+            <span className="text-black font-bold text-lg">{service?.priceLabel}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-black text-sm font-medium tracking-widest">BOOKING ID</span>
@@ -419,6 +419,12 @@ export default function BookingWizard() {
         {/* STEP 4: CUSTOMER DETAILS */}
         {state.step === 3 && (
           <div className="space-y-6">
+            {submitError && (
+              <div className="bg-red-50 text-red-800 p-4 sm:p-6 flex items-start gap-4 border border-red-100 rounded-lg">
+                <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                <p className="text-sm leading-relaxed">{submitError}</p>
+              </div>
+            )}
             <div>
               <label htmlFor="customer-name" className="block text-xs font-bold tracking-widest text-black mb-2">NAMA LENGKAP *</label>
               <input 
@@ -471,22 +477,14 @@ export default function BookingWizard() {
           <div className="space-y-8">
             <h3 className=" text-2xl font-bold text-black mb-6">RINGKASAN BOOKING</h3>
             
-            {submitError && (
-              <div className="bg-red-50 text-red-800 p-6 flex items-start gap-4 border border-red-100 mb-6">
-                <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-                <p className="text-sm leading-relaxed">{submitError}</p>
-              </div>
-            )}
+
 
             <div className="space-y-4 bg-paper p-6 border border-[#E8A0BF]/5">
               <div className="flex justify-between items-center">
                 <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase">TREATMENT</span>
                 <span className="text-black font-medium text-sm">{SERVICES.find(s => s.id === state.serviceId)?.name}</span>
               </div>
-              <div className="flex justify-between items-center">
-                <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase">artist</span>
-                <span className="text-black font-medium text-sm">{ARTISTS.find(b => b.id === state.artistId)?.name}</span>
-              </div>
+
               <div className="flex justify-between items-center">
                 <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase">TANGGAL</span>
                 <span className="text-black font-medium text-sm">{state.date}</span>
@@ -497,7 +495,7 @@ export default function BookingWizard() {
               </div>
               <div className="flex justify-between items-center pt-4 border-t border-slate-200">
                 <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase">TOTAL</span>
-                <span className="text-black font-bold text-sm">{ARTISTS.find(b => b.id === state.artistId)?.priceLabel}</span>
+                <span className="text-black font-bold text-sm">{service?.priceLabel}</span>
               </div>
             </div>
 
