@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,55 +24,33 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed w-full top-0 z-50 transition-colors duration-300 ${
+      className={`fixed w-full max-w-[430px] top-0 z-50 transition-colors duration-300 ${
         scrolled ? "bg-paper border-b border-dark/10" : "bg-transparent border-b border-dark"
       }`}
     >
       <div className="flex justify-between items-center px-6 py-4">
-        {/* Left: Est */}
-        <div className="hidden lg:block w-32 uppercase tracking-[0.2em] text-[10px] font-medium text-dark/60">
-          Est. 2024
-        </div>
-
         {/* Center: Logo */}
-        <Link href="/" className="font-editorial text-2xl tracking-normal normal-case italic font-semibold text-dark flex-1 lg:flex-none text-left lg:text-center">
+        <Link href="/" className="font-editorial text-2xl tracking-normal normal-case italic font-semibold text-dark flex-1 text-left">
           Namata Studio<span className="text-namata-pink">.</span>
         </Link>
 
-        {/* Right: Desk Nav */}
-        <div className="hidden lg:flex items-center space-x-8 w-auto">
-          <nav className="flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="uppercase tracking-[0.2em] text-[10px] font-medium text-dark/70 hover:text-namata-pink transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-          <Link
-            href="/booking"
-            className="uppercase tracking-[0.2em] text-[10px] font-bold text-dark border-b border-dark pb-0.5 hover:text-namata-pink hover:border-namata-pink transition-colors"
-          >
-            Booking
-          </Link>
-        </div>
-
         {/* Mobile Nav Toggle */}
         <button
-          className="lg:hidden p-2 text-dark"
+          className="p-2 text-dark"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle Menu"
         >
-          {isMobileMenuOpen ? <X size={24} strokeWidth={1} /> : <Menu size={24} strokeWidth={1} />}
+          {isMobileMenuOpen ? (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          ) : (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          )}
         </button>
       </div>
 
       {/* Mobile Nav Drawer */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-[100%] left-0 w-full h-screen bg-paper flex flex-col items-center pt-16 space-y-10 z-40 border-t border-dark">
+        <div className="absolute top-[100%] left-0 w-full h-screen bg-paper flex flex-col items-center pt-16 space-y-10 z-40 border-t border-dark">
           {navLinks.map((link) => (
             <Link
               key={link.name}

@@ -40,8 +40,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="scroll-smooth overflow-x-hidden">
-      <body className={`${fontSans.variable} ${fontEditorial.variable} font-sans bg-paper text-dark antialiased selection:bg-namata-pink selection:text-dark overflow-x-hidden`}>
+    <html lang="id" className="scroll-smooth">
+      <body className={`${fontSans.variable} ${fontEditorial.variable} font-sans bg-[#EAEAEA] text-dark antialiased selection:bg-namata-pink selection:text-dark flex justify-center`}>
+        <div className="w-full max-w-[430px] min-h-screen bg-paper relative shadow-2xl overflow-x-hidden border-x border-dark/10">
         <SplashScreen />
         <Header />
         <main className="min-h-screen">
@@ -49,6 +50,7 @@ export default function RootLayout({
         </main>
         <FloatingWhatsApp />
         <Footer />
+        </div>
       </body>
     </html>
   );
