@@ -92,15 +92,14 @@ export default function BookingWizard() {
   };
 
   const nextStep = () => {
-    if (state.step === 1 && state.artistId) {
-      updateState({ step: 3 });
+    if (state.step === 1) {
+      updateState({ step: 2, artistId: 'Studio' });
     } else {
-      updateState({ step: Math.min(state.step + 1, 5) });
+      updateState({ step: Math.min(state.step + 1, 4) });
     }
   };
 
   const prevStep = () => {
-    // If we're on step 3 and going back, we should go to step 2 so they CAN change the artist if they want to.
     updateState({ step: Math.max(state.step - 1, 1) });
   };
 
@@ -110,7 +109,7 @@ export default function BookingWizard() {
 
   // Load slots when step 3 is reached and date is selected
   useEffect(() => {
-    if (state.step === 3 && state.date && state.artistId && state.serviceId) {
+    if (state.step === 2 && state.date && state.artistId && state.serviceId) {
       const fetchSlots = async () => {
         setIsLoadingSlots(true);
         setSlotError(null);
@@ -182,7 +181,7 @@ export default function BookingWizard() {
     const artist = ARTISTS.find(b => b.id === state.artistId);
 
     const handleWhatsApp = () => {
-      const text = `Halo Namata Studio, saya ingin konfirmasi booking dengan detail berikut:\n\n*Booking ID:* ${confirmedBookingCode || 'N/A'}\n*TREATMENT:* ${service?.name}\n*Artist:* ${artist?.name || state.artistId}\n*Tanggal:* ${state.date}\n*Waktu:* ${state.time}`;
+      const text = `Halo Namata Studio, saya ingin konfirmasi booking dengan detail berikut:\n\n*Booking ID:* ${confirmedBookingCode || 'N/A'}\n*TREATMENT:* \n*Tanggal:* ${state.date}\n*Waktu:* ${state.time}`;
       window.open(`https://wa.me/62881036695165?text=${encodeURIComponent(text)}`, '_blank');
     };
 
@@ -256,7 +255,7 @@ export default function BookingWizard() {
       {/* Step Indicator */}
       <div className="mb-6 sm:mb-12">
         <div className="flex items-center justify-between text-[10px] sm:text-xs font-medium tracking-widest mb-3 sm:mb-4 px-2 sm:px-0">
-          {[1, 2, 3, 4, 5].map((stepNumber) => (
+          {[1, 2, 3].map((stepNumber) => (
             <div key={stepNumber} className={`flex items-center ${stepNumber !== 5 ? 'w-full' : ''}`}>
               <div className={`w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full border ${state.step === stepNumber ? 'bg-dark text-paper border-dark' : state.step > stepNumber ? 'bg-dark/10 border-dark/10 text-dark' : 'bg-transparent border-dark/20 text-dark/40'}`}>
                 {stepNumber}
@@ -269,10 +268,10 @@ export default function BookingWizard() {
         </div>
         <div className="text-center text-xs sm:text-sm font-bold tracking-widest text-dark">
           {state.step === 1 && "01 PILIH TREATMENT"}
-          {state.step === 2 && "02 PILIH artist"}
-          {state.step === 3 && "03 TANGGAL & WAKTU"}
-          {state.step === 4 && "04 DETAIL DIRI"}
-          {state.step === 5 && "05 KONFIRMASI"}
+          
+          {state.step === 2 && "02 TANGGAL & WAKTU"}
+          {state.step === 3 && "03 DETAIL DIRI"}
+          
         </div>
       </div>
 
@@ -300,13 +299,7 @@ export default function BookingWizard() {
         )}
 
         {/* STEP 2: artist */}
-        {state.step === 2 && (
-          <div className="space-y-4">
-            <p className="text-dark/70 mb-6">Pilih artist favoritmu.</p>
-            <div className="grid grid-cols-2 gap-2 sm:gap-4 max-w-md">
-              {ARTISTS.map((artist) => (
-                <label key={artist.id} className={`block relative border p-3 sm:p-4 cursor-pointer transition-all text-center ${state.artistId === artist.id ? 'border-dark bg-dark/5' : 'border-dark/10 hover:border-dark/30'}`}>
-                  <input type="radio" name="artist" value={artist.id} checked={state.artistId === artist.id} onChange={() => updateState({ artistId: artist.id })} className="sr-only" />
+         className="sr-only" />
                   <div className="flex flex-col items-center">
                     <div className="relative w-14 h-14 sm:w-16 sm:h-16 bg-paper shrink-0 mb-3 rounded-full overflow-hidden border border-dark/10">
                       <Image src={artist.image} alt={artist.name} fill className="object-cover grayscale" />
@@ -326,7 +319,7 @@ export default function BookingWizard() {
         )}
 
         {/* STEP 3: DATE & TIME */}
-        {state.step === 3 && (
+        {state.step === 2 && (
           <div className="space-y-8">
               <div>
                 <label className="block text-sm font-medium tracking-widest text-dark/70 mb-3">PILIH TANGGAL</label>
@@ -439,7 +432,7 @@ export default function BookingWizard() {
         )}
 
         {/* STEP 4: CUSTOMER DETAILS */}
-        {state.step === 4 && (
+        {state.step === 3 && (
           <div className="space-y-6">
             <div>
               <label htmlFor="customer-name" className="block text-xs font-bold tracking-widest text-dark/70 mb-2">NAMA LENGKAP *</label>
@@ -489,7 +482,7 @@ export default function BookingWizard() {
         )}
 
         {/* STEP 5: CONFIRMATION */}
-        {state.step === 5 && (
+        {state.step === 4 && (
           <div className="space-y-8">
             <h3 className="font-serif text-2xl font-bold text-dark mb-6">RINGKASAN BOOKING</h3>
             
@@ -568,14 +561,13 @@ export default function BookingWizard() {
           </button>
         )}
 
-        {state.step < 5 ? (
+        {state.step < 3 ? (
           <button 
             onClick={nextStep} 
             disabled={
               (state.step === 1 && !state.serviceId) ||
-              (state.step === 2 && !state.artistId) ||
-              (state.step === 3 && (!state.date || !state.time)) ||
-              (state.step === 4 && (!state.customer.name.trim() || !state.customer.whatsapp.trim()))
+              (state.step === 2 && (!state.date || !state.time)) ||
+              (state.step === 3 && (!state.customer.name.trim() || !state.customer.whatsapp.trim()))
             }
             className="bg-dark text-paper px-6 py-3 sm:px-10 sm:py-4 text-[10px] font-bold tracking-[0.15em] hover:bg-dark/90 disabled:bg-dark/20 disabled:text-dark/50 transition-colors flex items-center w-full md:w-auto justify-center uppercase"
           >
