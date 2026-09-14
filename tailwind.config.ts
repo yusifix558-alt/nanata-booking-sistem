@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         dark: "#121212",
-        "namata-pink": "#F3C4D1",
+        "nanata-pink": "#F3C4D1",
         paper: "#FAFAFA",
         borders: "#E0DCDA",
       },

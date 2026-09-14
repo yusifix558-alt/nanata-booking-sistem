@@ -31,7 +31,7 @@ export default function Header() {
       <div className="flex justify-between items-center px-6 py-4">
         {/* Center: Logo */}
         <Link href="/" className="font-editorial text-2xl tracking-normal normal-case italic font-semibold text-dark flex-1 text-left">
-          Namata Studio<span className="text-namata-pink">.</span>
+          Nanata Studio<span className="text-nanata-pink">.</span>
         </Link>
 
         {/* Mobile Nav Toggle */}
@@ -55,7 +55,7 @@ export default function Header() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-lg font-editorial font-medium tracking-[0.2em] text-dark hover:text-namata-pink transition-colors uppercase"
+              className="text-lg font-editorial font-medium tracking-[0.2em] text-dark hover:text-nanata-pink transition-colors uppercase"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}

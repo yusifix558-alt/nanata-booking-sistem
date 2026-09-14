@@ -64,7 +64,7 @@ export async function POST(request: Request) {
 
     // 4. Create Google Calendar Event
     const eventParams: EventInput = {
-      summary: `Namata Studio — ${service.name}`,
+      summary: `Nanata Studio — ${service.name}`,
       description: `Customer: ${data.customer.name}
 WhatsApp: ${data.customer.whatsapp}
 artist: ${artist.name}

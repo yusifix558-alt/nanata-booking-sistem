@@ -17,14 +17,14 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Namata Studio | Nail Art & Eyelash Extension",
+  title: "Nanata Studio | Nail Art & Eyelash Extension",
   description: "Tingkatkan rasa percaya dirimu dengan sentuhan nail art premium dan treatment bulu mata dari ahlinya.",
-  keywords: ["Namata Studio", "Nail Art", "Eyelash Extension", "Beauty Studio"],
+  keywords: ["Nanata Studio", "Nail Art", "Eyelash Extension", "Beauty Studio"],
   openGraph: {
-    title: "Namata Studio | Nail Art & Eyelash Extension",
+    title: "Nanata Studio | Nail Art & Eyelash Extension",
     description: "Tingkatkan rasa percaya dirimu dengan sentuhan nail art premium dan treatment bulu mata dari ahlinya.",
-    url: "https://namatastudio.id",
-    siteName: "Namata Studio",
+    url: "https://nanatastudio.id",
+    siteName: "Nanata Studio",
     locale: "id_ID",
     type: "website",
   },
@@ -41,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className="scroll-smooth">
-      <body className={`${fontSans.variable} ${fontEditorial.variable} font-sans bg-[#EAEAEA] text-dark antialiased selection:bg-namata-pink selection:text-dark flex justify-center`}>
+      <body className={`${fontSans.variable} ${fontEditorial.variable} font-sans bg-[#EAEAEA] text-dark antialiased selection:bg-nanata-pink selection:text-dark flex justify-center`}>
         <div className="w-full max-w-[430px] min-h-screen bg-paper relative shadow-2xl overflow-x-hidden border-x border-dark/10">
         <SplashScreen />
         

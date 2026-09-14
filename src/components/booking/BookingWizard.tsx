@@ -181,7 +181,7 @@ export default function BookingWizard() {
     const artist = ARTISTS.find(b => b.id === state.artistId);
 
     const handleWhatsApp = () => {
-      const text = `Halo Namata Studio, saya ingin konfirmasi booking dengan detail berikut:\n\n*Booking ID:* ${confirmedBookingCode || 'N/A'}\n*TREATMENT:* \n*Tanggal:* ${state.date}\n*Waktu:* ${state.time}`;
+      const text = `Halo Nanata Studio, saya ingin konfirmasi booking dengan detail berikut:\n\n*Booking ID:* ${confirmedBookingCode || 'N/A'}\n*TREATMENT:* \n*Tanggal:* ${state.date}\n*Waktu:* ${state.time}`;
       window.open(`https://wa.me/62881036695165?text=${encodeURIComponent(text)}`, '_blank');
     };
 
@@ -206,7 +206,7 @@ export default function BookingWizard() {
         <div className="flex justify-center mb-6">
           <CheckCircle2 className="w-16 h-16 text-dark" strokeWidth={1} />
         </div>
-        <h2 className="text-center font-serif text-3xl font-bold text-dark mb-2">BOOKING BERHASIL!</h2>
+        <h2 className="text-center  text-3xl font-bold text-dark mb-2">BOOKING BERHASIL!</h2>
         <p className="text-center text-dark/70 mb-10">Sampai jumpa di REAL.CO!</p>
 
         <div className="border-t border-b border-dark/10 py-6 mb-10 space-y-4">
@@ -251,7 +251,7 @@ export default function BookingWizard() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto animate-fade-in-up">
+    <div className="max-w-3xl mx-auto ">
       {/* Step Indicator */}
       <div className="mb-6 sm:mb-12">
         <div className="flex items-center justify-between text-[10px] sm:text-xs font-medium tracking-widest mb-3 sm:mb-4 px-2 sm:px-0">
@@ -286,7 +286,7 @@ export default function BookingWizard() {
                 <input type="radio" name="service" value={service.id} checked={state.serviceId === service.id} onChange={() => updateState({ serviceId: service.id })} className="sr-only" />
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="font-serif text-base sm:text-lg font-bold text-dark">{service.name}</h3>
+                    <h3 className=" text-base sm:text-xl font-bold text-dark tracking-tight">{service.name}</h3>
                     <p className="text-dark/70 text-xs sm:text-sm mt-1">{service.priceLabel}</p>
                   </div>
                   <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border flex items-center justify-center ${state.serviceId === service.id ? 'border-dark' : 'border-dark/20'}`}>
@@ -306,7 +306,7 @@ export default function BookingWizard() {
                 <div className="border border-dark/10 bg-transparent p-4 sm:p-6 shadow-sm">
                   <div className="flex justify-between items-center mb-6">
                     <button onClick={handlePrevMonth} className="p-2 hover:bg-dark/5 text-dark transition-colors rounded-full"><ChevronLeft className="w-5 h-5" /></button>
-                    <div className="font-serif text-lg font-bold text-dark">
+                    <div className=" text-xl font-bold text-dark tracking-tight">
                       {monthsIndo[currentMonth.getMonth()]} {currentMonth.getFullYear()}
                     </div>
                     <button onClick={handleNextMonth} className="p-2 hover:bg-dark/5 text-dark transition-colors rounded-full"><ChevronRight className="w-5 h-5" /></button>
@@ -335,9 +335,9 @@ export default function BookingWizard() {
                           disabled={isPast}
                           onClick={() => updateState({ date: dateStr, time: null })}
                           className={`h-10 w-full text-sm sm:text-base font-medium flex items-center justify-center transition-all ${
-                            isSelected ? 'bg-namata-pink text-dark shadow-md font-bold' : 
+                            isSelected ? 'bg-nanata-pink text-dark shadow-md font-bold' : 
                             isPast ? 'text-dark/20 cursor-not-allowed' : 
-                            'text-dark hover:bg-dark/5 cursor-pointer hover:text-namata-pink'
+                            'text-dark hover:bg-dark/5 cursor-pointer hover:text-nanata-pink'
                           }`}
                         >
                           {date.getDate()}
@@ -354,7 +354,7 @@ export default function BookingWizard() {
                 
                 {isLoadingSlots && (
                   <div className="flex flex-col items-center justify-center py-12 text-dark/60">
-                    <Loader2 className="w-8 h-8 animate-spin mb-4 text-namata-pink" />
+                    <Loader2 className="w-8 h-8 animate-spin mb-4 text-nanata-pink" />
                     <p className="text-sm font-medium tracking-widest">MEMERIKSA JADWAL...</p>
                   </div>
                 )}
@@ -464,7 +464,7 @@ export default function BookingWizard() {
         {/* STEP 5: CONFIRMATION */}
         {state.step === 4 && (
           <div className="space-y-8">
-            <h3 className="font-serif text-2xl font-bold text-dark mb-6">RINGKASAN BOOKING</h3>
+            <h3 className=" text-2xl font-bold text-dark mb-6">RINGKASAN BOOKING</h3>
             
             {submitError && (
               <div className="bg-red-50 text-red-800 p-6 flex items-start gap-4 border border-red-100 mb-6">
@@ -503,7 +503,7 @@ export default function BookingWizard() {
                {state.customer.notes && <p className="text-dark/70 text-sm italic mt-2">&quot;{state.customer.notes}&quot;</p>}
             </div>
 
-            <div className="bg-paper/50 p-6 border border-namata-pink/30 rounded-sm">
+            <div className="bg-paper/50 p-6 border border-nanata-pink/30 rounded-sm">
               <h4 className="text-dark font-bold text-xs tracking-widest mb-2 uppercase">ATURAN KETERLAMBATAN</h4>
               <p className="text-dark/80 text-xs leading-relaxed mb-6">
                 Mohon datang tepat waktu sesuai jadwal booking. <strong>Toleransi keterlambatan maksimal 5 menit</strong>. Keterlambatan lebih dari 5 menit mengakibatkan booking dibatalkan atau dialihkan ke antrean berikutnya sesuai ketersediaan artist.
@@ -557,7 +557,7 @@ export default function BookingWizard() {
           <button 
             onClick={handleConfirm}
             disabled={isSubmitting || !state.termsAccepted}
-            className="bg-namata-pink text-dark px-6 py-3 sm:px-10 sm:py-4 text-[10px] font-bold tracking-[0.15em] hover:bg-paper disabled:bg-dark/10 disabled:text-dark/40 transition-colors w-full md:w-auto flex items-center justify-center uppercase"
+            className="bg-nanata-pink text-dark px-6 py-3 sm:px-10 sm:py-4 text-[10px] font-bold tracking-[0.15em] hover:bg-paper disabled:bg-dark/10 disabled:text-dark/40 transition-colors w-full md:w-auto flex items-center justify-center uppercase"
           >
             {isSubmitting ? (
               <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> MEMPROSES...</>
