@@ -181,8 +181,13 @@ export default function BookingWizard() {
     const artist = ARTISTS.find(b => b.id === state.artistId);
 
     const handleWhatsApp = () => {
-      const text = `Halo Nanata Studio, saya ingin konfirmasi booking dengan detail berikut:\n\n*Booking ID:* ${confirmedBookingCode || 'N/A'}\n*TREATMENT:* \n*Tanggal:* ${state.date}\n*Waktu:* ${state.time}`;
-      window.open(`https://wa.me/62881036695165?text=${encodeURIComponent(text)}`, '_blank');
+      const text = `Halo Nanata Studio, saya ingin konfirmasi booking dengan detail berikut:
+
+*Booking ID:* 
+*TREATMENT:* ${service?.name}
+*Tanggal:* 
+*Waktu:* `;
+      window.open(`https://wa.me/6285283120151?text=${encodeURIComponent(text)}`, '_blank');
     };
 
     const handleAddToCalendar = () => {
@@ -276,7 +281,7 @@ export default function BookingWizard() {
       </div>
 
       {/* Main Content Area */}
-      <div className="bg-white p-4 sm:p-6 md:p-10 shadow-sm border border-dark/5 min-h-[300px] sm:min-h-[400px]">
+      <div className="bg-white py-4 sm:py-6 md:py-10 min-h-[300px] sm:min-h-[400px]">
         {/* STEP 1: SERVICE */}
         {state.step === 1 && (
           <div className="space-y-3 sm:space-y-4">
@@ -303,7 +308,7 @@ export default function BookingWizard() {
           <div className="space-y-8">
               <div>
                 <label className="block text-sm font-medium tracking-widest text-dark/70 mb-3">PILIH TANGGAL</label>
-                <div className="border border-dark/10 bg-transparent p-4 sm:p-6 shadow-sm">
+                <div className="bg-transparent py-4 sm:py-6">
                   <div className="flex justify-between items-center mb-6">
                     <button onClick={handlePrevMonth} className="p-2 hover:bg-dark/5 text-dark transition-colors rounded-full"><ChevronLeft className="w-5 h-5" /></button>
                     <div className=" text-xl font-bold text-dark tracking-tight">
@@ -570,3 +575,5 @@ export default function BookingWizard() {
     </div>
   );
 }
+
+

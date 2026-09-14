@@ -23,7 +23,7 @@ export default function Home() {
             <h2 className="text-2xl font-bold text-dark mb-2">Reservation.</h2>
             <p className="text-[10px] uppercase tracking-widest text-dark/70">Pilih artist & jadwal</p>
           </div>
-          <div className="bg-white border border-dark">
+          <div className="bg-white w-full">
             <BookingWizard />
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function Home() {
         </button>
         
         <a 
-          href="https://wa.me/62881036695165" 
+          href="https://wa.me/6285283120151" 
           target="_blank" 
           rel="noreferrer" 
           className="w-full bg-transparent border border-dark text-dark rounded-[2rem] py-4 text-xs font-semibold uppercase tracking-widest text-center hover:bg-dark hover:text-paper transition-colors"
@@ -67,7 +67,7 @@ export default function Home() {
         </a>
         
         <a 
-          href="#" 
+          href="https://maps.app.goo.gl/iuF843vMhZYGH1YG9" 
           target="_blank" 
           rel="noreferrer" 
           className="w-full bg-transparent border border-dark text-dark rounded-[2rem] py-4 text-xs font-semibold uppercase tracking-widest text-center hover:bg-dark hover:text-paper transition-colors"
