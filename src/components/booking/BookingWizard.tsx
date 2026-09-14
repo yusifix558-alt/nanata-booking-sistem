@@ -202,7 +202,7 @@ export default function BookingWizard() {
         return `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}T${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}${pad(d.getUTCSeconds())}Z`;
       };
       
-      const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(`REAL.CO — ${service.name}`)}&dates=${formatTime(startTime)}/${formatTime(endTime)}&details=${encodeURIComponent(`Booking ID: ${confirmedBookingCode || 'N/A'}\nartist: ${artist?.name || ''}`)}`;
+      const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(`Nanata Studio — ${service.name}`)}&dates=${formatTime(startTime)}/${formatTime(endTime)}&details=${encodeURIComponent(`Booking ID: ${confirmedBookingCode || 'N/A'}\nartist: ${artist?.name || ''}`)}`;
       window.open(url, '_blank');
     };
 
@@ -212,7 +212,7 @@ export default function BookingWizard() {
           <CheckCircle2 className="w-16 h-16 text-black" strokeWidth={1} />
         </div>
         <h2 className="text-center  text-3xl font-bold text-black mb-2">BOOKING BERHASIL!</h2>
-        <p className="text-center text-black mb-10">Sampai jumpa di REAL.CO!</p>
+        <p className="text-center text-black mb-10">Sampai jumpa di Nanata Studio!</p>
 
         <div className="border-t border-b border-slate-200 py-6 mb-10 space-y-4">
           <div className="flex justify-between">
@@ -524,7 +524,7 @@ export default function BookingWizard() {
                   </svg>
                 </div>
                 <span className="text-black text-sm font-medium leading-relaxed group-hover:text-black transition-colors">
-                  Saya memahami bahwa booking akan dikonfirmasi oleh tim REAL.CO melalui WhatsApp dan mematuhi aturan keterlambatan di atas. <span className="text-red-500">*</span>
+                  Saya memahami bahwa booking akan dikonfirmasi oleh tim Nanata Studio melalui WhatsApp dan mematuhi aturan keterlambatan di atas. <span className="text-red-500">*</span>
                 </span>
               </label>
             </div>
