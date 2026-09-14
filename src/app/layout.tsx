@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import { Jost, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SplashScreen from "@/components/SplashScreen";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
+const fontSans = Jost({ subsets: ["latin"], variable: "--font-sans" });
+const fontEditorial = Cormorant_Garamond({ subsets: ["latin"], weight: ["300", "400", "600", "700"], style: ["normal", "italic"], variable: "--font-editorial" });
 
 export const viewport = {
   width: "device-width",
@@ -15,14 +17,14 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "REAL.CO | Hair Studio & Mini Cafe Batu",
-  description: "Hair Studio & Mini Cafe di Batu. Ruang yang nyaman untuk bersantai, menikmati kopi, dan jadi versi terbaik dirimu. Booking haircut atau nikmati racikan kopi kami.",
-  keywords: ["REAL.CO", "REAL.CO Batu", "hair studio Batu", "barbershop Batu", "coffee Batu", "haircut Batu"],
+  title: "Namata Studio | Nail Art & Eyelash Extension",
+  description: "Tingkatkan rasa percaya dirimu dengan sentuhan nail art premium dan treatment bulu mata dari ahlinya.",
+  keywords: ["Namata Studio", "Nail Art", "Eyelash Extension", "Beauty Studio"],
   openGraph: {
-    title: "REAL.CO | Hair Studio & Mini Cafe Batu",
-    description: "Where Style Meets Comfort. Hair Studio & Mini Cafe di Batu.",
-    url: "https://realco.id",
-    siteName: "REAL.CO",
+    title: "Namata Studio | Nail Art & Eyelash Extension",
+    description: "Tingkatkan rasa percaya dirimu dengan sentuhan nail art premium dan treatment bulu mata dari ahlinya.",
+    url: "https://namatastudio.id",
+    siteName: "Namata Studio",
     locale: "id_ID",
     type: "website",
   },
@@ -39,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className="scroll-smooth overflow-x-hidden">
-      <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans bg-cream text-forest-dark antialiased selection:bg-gold selection:text-white overflow-x-hidden`}>
+      <body className={`${fontSans.variable} ${fontEditorial.variable} font-sans bg-paper text-dark antialiased selection:bg-namata-pink selection:text-dark overflow-x-hidden`}>
         <SplashScreen />
         <Header />
         <main className="min-h-screen">

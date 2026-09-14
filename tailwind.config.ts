@@ -9,20 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        forest: {
-          DEFAULT: "#1F3A2E",
-          dark: "#12221A",
-        },
-        cream: "#F5EFEB",
-        "off-white": "#FAFAFA",
-        gold: {
-          DEFAULT: "#B69D74",
-        },
+        dark: "#121212",
+        "namata-pink": "#F3C4D1",
+        paper: "#FAFAFA",
+        borders: "#E0DCDA",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "sans-serif"],
-        serif: ["var(--font-geist-sans)", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
+        sans: ["var(--font-sans)", "sans-serif"],
+        editorial: ["var(--font-editorial)", "serif"],
       },
       animation: {
         'fade-in': 'fadeIn 1s ease-out forwards',
