@@ -240,10 +240,10 @@ export default function BookingWizard() {
         </div>
 
         <div className="space-y-4">
-          <button onClick={handleAddToCalendar} className="w-full bg-[#E8A0BF] text-white py-4 text-sm font-medium tracking-widest hover:bg-[#E8A0BF] transition-colors flex items-center justify-center gap-2">
+          <button onClick={handleAddToCalendar} className="w-full bg-[#E8A0BF] text-white py-4 text-sm font-medium tracking-widest hover:bg-[#E8A0BF]/90 transition-colors rounded-full flex items-center justify-center gap-2">
             <Calendar className="w-4 h-4" /> TAMBAH KE GOOGLE CALENDAR
           </button>
-          <button onClick={handleWhatsApp} className="w-full border border-[#E8A0BF] text-black py-4 text-sm font-medium tracking-widest hover:bg-[#FFF7F9] transition-colors">
+          <button onClick={handleWhatsApp} className="w-full border border-[#E8A0BF] text-[#E8A0BF] py-4 text-sm font-medium tracking-widest hover:bg-[#FFF7F9] transition-colors rounded-full flex items-center justify-center">
             CHAT VIA WHATSAPP
           </button>
         </div>
