@@ -40,7 +40,7 @@ export default function Home() {
       {/* Top / Brand */}
       <div className="flex flex-col items-center mt-4 md:mt-12 text-center z-10 w-full">
         <div className="relative w-32 h-32 mb-6 rounded-full overflow-hidden shadow-sm border-[3px] border-white">
-           <Image src="/logo.jpg" alt="Nanata Studio Logo" fill className="object-cover" priority />
+           <Image src="/logo.png" alt="Nanata Studio Logo" fill className="object-cover" priority />
         </div>
         
         <div className="mt-4 flex flex-col items-center gap-2 text-xs text-black tracking-widest font-medium uppercase">
