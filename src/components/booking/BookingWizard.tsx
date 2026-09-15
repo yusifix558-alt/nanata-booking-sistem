@@ -233,7 +233,7 @@ export default function BookingWizard() {
           </div>
           <div className="flex justify-between pt-4 border-t border-[#E8A0BF]/5">
             <span className="text-black text-sm font-medium tracking-widest">TOTAL</span>
-            <span className="text-black font-bold text-lg">{service?.priceLabel}</span>
+            <span className="text-black font-bold text-lg">{SERVICES.find(s => s.id === state.serviceId)?.priceLabel}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-black text-sm font-medium tracking-widest">BOOKING ID</span>
@@ -495,7 +495,7 @@ export default function BookingWizard() {
               </div>
               <div className="flex justify-between items-center pt-4 border-t border-slate-200">
                 <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase">TOTAL</span>
-                <span className="text-black font-bold text-sm">{service?.priceLabel}</span>
+                <span className="text-black font-bold text-sm">{SERVICES.find(s => s.id === state.serviceId)?.priceLabel}</span>
               </div>
             </div>
 
