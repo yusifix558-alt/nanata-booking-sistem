@@ -41,7 +41,7 @@ export async function appendBookingToSheet(bookingData: {
   try {
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:J', 
+      range: 'A:J',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [

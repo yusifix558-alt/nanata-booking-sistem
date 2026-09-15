@@ -215,29 +215,25 @@ export default function BookingWizard() {
         <p className="text-center text-black mb-10">Sampai jumpa di Nanata Studio!</p>
 
         <div className="border-t border-b border-slate-200 py-6 mb-10 space-y-4">
-          <div className="flex justify-between">
-            <span className="text-black text-sm font-medium tracking-widest">TREATMENT</span>
-            <span className="text-black font-medium">{service?.name}</span>
+          <div className="flex justify-between items-start gap-4">
+            <span className="text-black text-sm font-medium tracking-widest flex-shrink-0">TREATMENT</span>
+            <span className="text-black font-medium text-right">{service?.name}</span>
           </div>
-          <div className="flex justify-between">
-            <span className="text-black text-sm font-medium tracking-widest">artist</span>
-            <span className="text-black font-medium">{artist?.name || state.artistId}</span>
+          <div className="flex justify-between items-start gap-4">
+            <span className="text-black text-sm font-medium tracking-widest flex-shrink-0">TANGGAL</span>
+            <span className="text-black font-medium text-right">{state.date}</span>
           </div>
-          <div className="flex justify-between">
-            <span className="text-black text-sm font-medium tracking-widest">TANGGAL</span>
-            <span className="text-black font-medium">{state.date}</span>
+          <div className="flex justify-between items-start gap-4">
+            <span className="text-black text-sm font-medium tracking-widest flex-shrink-0">WAKTU</span>
+            <span className="text-black font-medium text-right">{state.time}</span>
           </div>
-          <div className="flex justify-between">
-            <span className="text-black text-sm font-medium tracking-widest">WAKTU</span>
-            <span className="text-black font-medium">{state.time}</span>
+          <div className="flex justify-between items-start gap-4 pt-4 border-t border-[#E8A0BF]/5">
+            <span className="text-black text-sm font-medium tracking-widest flex-shrink-0">TOTAL</span>
+            <span className="text-black font-bold text-lg text-right">{SERVICES.find(s => s.id === state.serviceId)?.priceLabel}</span>
           </div>
-          <div className="flex justify-between pt-4 border-t border-[#E8A0BF]/5">
-            <span className="text-black text-sm font-medium tracking-widest">TOTAL</span>
-            <span className="text-black font-bold text-lg">{SERVICES.find(s => s.id === state.serviceId)?.priceLabel}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-black text-sm font-medium tracking-widest">BOOKING ID</span>
-            <span className="text-black font-medium font-mono text-sm">
+          <div className="flex justify-between items-start gap-4">
+            <span className="text-black text-sm font-medium tracking-widest flex-shrink-0">BOOKING ID</span>
+            <span className="text-black font-medium font-mono text-sm text-right">
               {confirmedBookingCode || `RC${Math.floor(Math.random() * 100000)}`}
             </span>
           </div>
@@ -480,22 +476,22 @@ export default function BookingWizard() {
 
 
             <div className="space-y-4 bg-paper p-6 border border-[#E8A0BF]/5">
-              <div className="flex justify-between items-center">
-                <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase">TREATMENT</span>
-                <span className="text-black font-medium text-sm">{SERVICES.find(s => s.id === state.serviceId)?.name}</span>
+              <div className="flex justify-between items-start gap-4">
+                <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase flex-shrink-0">TREATMENT</span>
+                <span className="text-black font-medium text-sm text-right">{SERVICES.find(s => s.id === state.serviceId)?.name}</span>
               </div>
 
-              <div className="flex justify-between items-center">
-                <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase">TANGGAL</span>
-                <span className="text-black font-medium text-sm">{state.date}</span>
+              <div className="flex justify-between items-start gap-4">
+                <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase flex-shrink-0">TANGGAL</span>
+                <span className="text-black font-medium text-sm text-right">{state.date}</span>
               </div>
-              <div className="flex justify-between items-center">
-                <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase">WAKTU</span>
-                <span className="text-black font-medium text-sm">{state.time}</span>
+              <div className="flex justify-between items-start gap-4">
+                <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase flex-shrink-0">WAKTU</span>
+                <span className="text-black font-medium text-sm text-right">{state.time}</span>
               </div>
-              <div className="flex justify-between items-center pt-4 border-t border-slate-200">
-                <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase">TOTAL</span>
-                <span className="text-black font-bold text-sm">{SERVICES.find(s => s.id === state.serviceId)?.priceLabel}</span>
+              <div className="flex justify-between items-start gap-4 pt-4 border-t border-slate-200">
+                <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase flex-shrink-0">TOTAL</span>
+                <span className="text-black font-bold text-sm text-right">{SERVICES.find(s => s.id === state.serviceId)?.priceLabel}</span>
               </div>
             </div>
 
@@ -560,7 +556,7 @@ export default function BookingWizard() {
           <button 
             onClick={handleConfirm}
             disabled={isSubmitting || !state.customer.name.trim() || !state.customer.whatsapp.trim()}
-            className="bg-[#E8A0BF] text-white px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] rounded-full hover:opacity-90 disabled:opacity-50 transition-opacity w-full md:w-auto flex items-center justify-center uppercase"
+            className={`bg-[#E8A0BF] text-white px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] rounded-full transition-opacity w-full md:w-auto flex items-center justify-center uppercase ${isSubmitting ? 'opacity-90 cursor-wait' : 'hover:opacity-90 disabled:opacity-50'}`}
           >
             {isSubmitting ? (
               <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> MEMPROSES...</>
