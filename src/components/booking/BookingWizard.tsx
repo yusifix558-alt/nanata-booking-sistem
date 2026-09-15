@@ -534,7 +534,7 @@ export default function BookingWizard() {
         {state.step > 1 && (
           <button 
             onClick={prevStep}
-            className="border border-[#E8A0BF]/20 text-black px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] hover:bg-slate-50 rounded-full transition-colors flex items-center justify-center uppercase w-full md:w-auto"
+            className="border border-[#E8A0BF] text-[#E8A0BF] px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] hover:bg-[#FFF7F9] rounded-full transition-colors flex items-center justify-center uppercase w-full md:w-auto whitespace-nowrap"
           >
             KEMBALI
           </button>
@@ -548,7 +548,7 @@ export default function BookingWizard() {
               (state.step === 2 && (!state.date || !state.time)) ||
               (state.step === 3 && (!state.customer.name.trim() || !state.customer.whatsapp.trim()))
             }
-            className="bg-[#E8A0BF] text-white px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] rounded-full hover:opacity-90 disabled:opacity-50 transition-opacity flex items-center w-full md:w-auto justify-center uppercase"
+            className="bg-[#E8A0BF] text-white px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] rounded-full hover:opacity-90 disabled:opacity-50 transition-opacity flex items-center justify-center uppercase w-full md:w-auto whitespace-nowrap"
           >
             LANJUT <ArrowRight className="ml-2 w-4 h-4" />
           </button>
@@ -556,7 +556,7 @@ export default function BookingWizard() {
           <button 
             onClick={handleConfirm}
             disabled={isSubmitting || !state.customer.name.trim() || !state.customer.whatsapp.trim()}
-            className={`bg-[#E8A0BF] text-white px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] rounded-full transition-opacity w-full md:w-auto flex items-center justify-center uppercase ${isSubmitting ? 'opacity-90 cursor-wait' : 'hover:opacity-90 disabled:opacity-50'}`}
+            className={`bg-[#E8A0BF] text-white px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] rounded-full transition-opacity w-full md:w-auto flex items-center justify-center uppercase whitespace-nowrap ${isSubmitting ? 'opacity-90 cursor-wait' : 'hover:opacity-90 disabled:opacity-50'}`}
           >
             {isSubmitting ? (
               <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> MEMPROSES...</>
