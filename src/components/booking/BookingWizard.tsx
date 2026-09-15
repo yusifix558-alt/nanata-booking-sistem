@@ -530,11 +530,11 @@ export default function BookingWizard() {
       </div>
 
       {/* Navigation Footer */}
-      <div className={`pt-6 sm:pt-8 pb-8 px-4 sm:px-8 border-t border-slate-200 flex flex-col-reverse md:flex-row gap-4 mt-6 ${state.step > 1 ? 'justify-between' : 'justify-end'}`}>
+      <div className={`pt-6 sm:pt-8 pb-8 px-4 sm:px-8 border-t border-slate-200 flex flex-col-reverse sm:flex-row flex-wrap gap-4 mt-6 ${state.step > 1 ? 'sm:justify-between' : 'sm:justify-end'}`}>
         {state.step > 1 && (
           <button 
             onClick={prevStep}
-            className="border border-[#E8A0BF] text-[#E8A0BF] px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] hover:bg-[#FFF7F9] rounded-full transition-colors flex items-center justify-center uppercase w-full md:w-auto whitespace-nowrap"
+            className="border border-[#E8A0BF] text-[#E8A0BF] px-4 py-3 sm:px-8 sm:py-4 text-[10px] sm:text-xs font-bold tracking-widest hover:bg-[#FFF7F9] rounded-full transition-colors flex items-center justify-center uppercase w-full sm:w-auto whitespace-nowrap flex-1 sm:flex-none"
           >
             KEMBALI
           </button>
@@ -548,7 +548,7 @@ export default function BookingWizard() {
               (state.step === 2 && (!state.date || !state.time)) ||
               (state.step === 3 && (!state.customer.name.trim() || !state.customer.whatsapp.trim()))
             }
-            className="bg-[#E8A0BF] text-white px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] rounded-full hover:opacity-90 disabled:opacity-50 transition-opacity flex items-center justify-center uppercase w-full md:w-auto whitespace-nowrap"
+            className="bg-[#E8A0BF] text-white px-4 py-3 sm:px-8 sm:py-4 text-[10px] sm:text-xs font-bold tracking-widest rounded-full hover:opacity-90 disabled:opacity-50 transition-opacity flex items-center justify-center uppercase w-full sm:w-auto whitespace-nowrap flex-1 sm:flex-none"
           >
             LANJUT <ArrowRight className="ml-2 w-4 h-4" />
           </button>
@@ -556,7 +556,7 @@ export default function BookingWizard() {
           <button 
             onClick={handleConfirm}
             disabled={isSubmitting || !state.customer.name.trim() || !state.customer.whatsapp.trim()}
-            className={`bg-[#E8A0BF] text-white px-6 py-3 sm:px-10 sm:py-4 text-xs font-bold tracking-[0.1em] rounded-full transition-opacity w-full md:w-auto flex items-center justify-center uppercase whitespace-nowrap ${isSubmitting ? 'opacity-90 cursor-wait' : 'hover:opacity-90 disabled:opacity-50'}`}
+            className={`bg-[#E8A0BF] text-white px-4 py-3 sm:px-8 sm:py-4 text-[10px] sm:text-xs font-bold tracking-widest rounded-full transition-opacity w-full sm:w-auto flex items-center justify-center uppercase whitespace-nowrap flex-1 sm:flex-none ${isSubmitting ? 'opacity-90 cursor-wait' : 'hover:opacity-90 disabled:opacity-50'}`}
           >
             {isSubmitting ? (
               <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> MEMPROSES...</>
