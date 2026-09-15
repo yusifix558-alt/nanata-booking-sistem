@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { SERVICES, ARTISTS } from "@/lib/data";
 import { ArrowRight, CheckCircle2, AlertCircle, Loader2, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
+
 
 type BookingState = {
   step: number;
