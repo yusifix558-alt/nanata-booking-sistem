@@ -95,8 +95,12 @@ ${data.customer.notes ? `\nNotes: ${data.customer.notes}` : ''}`,
     createdEventId = gCalEvent.id;
     console.log(`[CALENDAR_EVENT_CREATION] Success. Event ID: ${createdEventId}`);
 
+    const [hours, minutes] = data.time.split(':').map(Number);
+    const endMinutesTotal = hours * 60 + minutes + service.duration;
+    const endHour = Math.floor(endMinutesTotal / 60) % 24;
+    const endMin = endMinutesTotal % 60;
     const pad = (n: number) => n.toString().padStart(2, '0');
-    const displayTime = `${data.time} - ${pad(endTime.getHours())}:${pad(endTime.getMinutes())}`;
+    const displayTime = `${data.time} - ${pad(endHour)}:${pad(endMin)}`;
 
     // 5. Save Booking to Google Sheets
     await appendBookingToSheet({

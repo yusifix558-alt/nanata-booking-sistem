@@ -182,12 +182,12 @@ export default function BookingWizard() {
     if (!selectedService) return state.time;
     
     const [hours, minutes] = state.time.split(':').map(Number);
-    const date = new Date();
-    date.setHours(hours, minutes, 0, 0);
-    date.setMinutes(date.getMinutes() + selectedService.duration);
+    const endMinutesTotal = hours * 60 + minutes + selectedService.duration;
+    const endHour = Math.floor(endMinutesTotal / 60) % 24;
+    const endMin = endMinutesTotal % 60;
     
     const pad = (n: number) => n.toString().padStart(2, '0');
-    return `${state.time} - ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+    return `${state.time} - ${pad(endHour)}:${pad(endMin)}`;
   };
 
   if (bookingConfirmed) {
