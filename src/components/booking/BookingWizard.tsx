@@ -176,6 +176,20 @@ export default function BookingWizard() {
     }
   };
 
+  const getDisplayTime = () => {
+    if (!state.time) return '';
+    const selectedService = SERVICES.find(s => s.id === state.serviceId);
+    if (!selectedService) return state.time;
+    
+    const [hours, minutes] = state.time.split(':').map(Number);
+    const date = new Date();
+    date.setHours(hours, minutes, 0, 0);
+    date.setMinutes(date.getMinutes() + selectedService.duration);
+    
+    const pad = (n: number) => n.toString().padStart(2, '0');
+    return `${state.time} - ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+  };
+
   if (bookingConfirmed) {
     const service = SERVICES.find(s => s.id === state.serviceId);
     const artist = ARTISTS.find(b => b.id === state.artistId);
@@ -225,7 +239,7 @@ export default function BookingWizard() {
           </div>
           <div className="flex justify-between items-start gap-4">
             <span className="text-black text-sm font-medium tracking-widest flex-shrink-0">WAKTU</span>
-            <span className="text-black font-medium text-right">{state.time}</span>
+            <span className="text-black font-medium text-right">{getDisplayTime()}</span>
           </div>
           <div className="flex justify-between items-start gap-4 pt-4 border-t border-[#E8A0BF]/5">
             <span className="text-black text-sm font-medium tracking-widest flex-shrink-0">TOTAL</span>
@@ -487,7 +501,7 @@ export default function BookingWizard() {
               </div>
               <div className="flex justify-between items-start gap-4">
                 <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase flex-shrink-0">WAKTU</span>
-                <span className="text-black font-medium text-sm text-right">{state.time}</span>
+                <span className="text-black font-medium text-sm text-right">{getDisplayTime()}</span>
               </div>
               <div className="flex justify-between items-start gap-4 pt-4 border-t border-slate-200">
                 <span className="text-black text-[10px] font-bold tracking-[0.2em] uppercase flex-shrink-0">TOTAL</span>

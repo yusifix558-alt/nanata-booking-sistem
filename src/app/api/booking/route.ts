@@ -95,6 +95,9 @@ ${data.customer.notes ? `\nNotes: ${data.customer.notes}` : ''}`,
     createdEventId = gCalEvent.id;
     console.log(`[CALENDAR_EVENT_CREATION] Success. Event ID: ${createdEventId}`);
 
+    const pad = (n: number) => n.toString().padStart(2, '0');
+    const displayTime = `${data.time} - ${pad(endTime.getHours())}:${pad(endTime.getMinutes())}`;
+
     // 5. Save Booking to Google Sheets
     await appendBookingToSheet({
       bookingCode,
@@ -103,7 +106,7 @@ ${data.customer.notes ? `\nNotes: ${data.customer.notes}` : ''}`,
       serviceName: service.name,
       artistName: artist.name,
       date: data.date,
-      time: data.time,
+      time: displayTime,
       price: service.price
     });
 
@@ -129,7 +132,7 @@ ${data.customer.notes ? `\nNotes: ${data.customer.notes}` : ''}`,
                 <table style="width: 100%; border-collapse: collapse;">
                   <tr><td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>Booking ID</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #ddd;">${bookingCode}</td></tr>
                   <tr><td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>Layanan</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #ddd;">${service.name}</td></tr>
-                  <tr><td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>Waktu</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #ddd;">${data.date} pkl ${data.time}</td></tr>
+                  <tr><td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>Waktu</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #ddd;">${data.date} pkl ${displayTime}</td></tr>
                   <tr><td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>Total Harga</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #ddd;">${service.priceLabel}</td></tr>
                   <tr><td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>Nama Customer</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #ddd;">${data.customer.name}</td></tr>
                   <tr><td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>WhatsApp</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><a href="https://wa.me/${data.customer.whatsapp.replace(/\D/g, '')}">${data.customer.whatsapp}</a></td></tr>
