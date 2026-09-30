@@ -297,17 +297,24 @@ export default function BookingWizard() {
           <div className="space-y-3 sm:space-y-4">
             <p className="text-black mb-4 sm:mb-6 text-xs sm:text-base">Pilih TREATMENT yang sesuai dengan kebutuhanmu.</p>
             {SERVICES.map((service) => (
-              <label key={service.id} className={`block relative border p-5 sm:p-6 rounded-xl mb-3 cursor-pointer transition-all ${state.serviceId === service.id ? 'border-[#E8A0BF] bg-[#FFF7F9]' : 'border-slate-200 hover:border-[#E8A0BF]/40'}`}>
+              <label key={service.id} className={`block relative border p-5 sm:p-6 rounded-xl mb-3 cursor-pointer transition-all duration-300 ${state.serviceId === service.id ? 'border-[#E8A0BF] bg-[#FFF7F9]' : 'border-slate-200 hover:border-[#E8A0BF]/40'}`}>
                 <input type="radio" name="service" value={service.id} checked={state.serviceId === service.id} onChange={() => updateState({ serviceId: service.id })} className="sr-only" />
                 <div className="flex justify-between items-center">
                   <div>
                     <h3 className=" text-sm font-semibold text-black ">{service.name}</h3>
                     <p className="text-black text-xs sm:text-sm mt-1">{service.priceLabel}</p>
                   </div>
-                  <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border flex items-center justify-center ${state.serviceId === service.id ? 'border-[#E8A0BF]' : 'border-[#E8A0BF]/20'}`}>
+                  <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border flex items-center justify-center shrink-0 ml-4 ${state.serviceId === service.id ? 'border-[#E8A0BF]' : 'border-[#E8A0BF]/20'}`}>
                     {state.serviceId === service.id && <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#E8A0BF] rounded-full"></div>}
                   </div>
                 </div>
+                
+                {/* Image drops down when selected */}
+                {state.serviceId === service.id && (service as any).image && (
+                  <div className="mt-4 rounded-lg overflow-hidden border border-[#E8A0BF]/20 bg-white shadow-sm animate-in fade-in slide-in-from-top-2 duration-300">
+                    <img src={(service as any).image} alt={service.name} className="w-full h-40 sm:h-48 object-cover" />
+                  </div>
+                )}
               </label>
             ))}
           </div>
@@ -351,7 +358,7 @@ export default function BookingWizard() {
                           onClick={() => updateState({ date: dateStr, time: null })}
                           className={`h-10 w-full text-sm font-medium flex items-center justify-center transition-all rounded-full ${
                             isSelected ? 'bg-[#E8A0BF] text-white shadow-sm font-bold' : 
-                            isPast ? 'text-black cursor-not-allowed' : 
+                            isPast ? 'text-slate-300 opacity-50 cursor-not-allowed' : 
                             'text-black hover:bg-[#FFF7F9] cursor-pointer hover:text-nanata-pink'
                           }`}
                         >
