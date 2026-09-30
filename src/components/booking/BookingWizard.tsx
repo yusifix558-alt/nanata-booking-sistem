@@ -310,9 +310,10 @@ export default function BookingWizard() {
                 </div>
                 
                 {/* Image drops down when selected */}
-                {state.serviceId === service.id && (service as any).image && (
+                {state.serviceId === service.id && service.image && (
                   <div className="mt-4 rounded-lg overflow-hidden border border-[#E8A0BF]/20 bg-white shadow-sm animate-in fade-in slide-in-from-top-2 duration-300">
-                    <img src={(service as any).image} alt={service.name} className="w-full h-40 sm:h-48 object-cover" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={service.image} alt={service.name} className="w-full h-40 sm:h-48 object-cover" />
                   </div>
                 )}
               </label>
