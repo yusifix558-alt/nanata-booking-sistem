@@ -149,6 +149,44 @@ ${data.customer.notes ? `\nNotes: ${data.customer.notes}` : ''}`,
           })
         });
         console.log(`[NOTIFICATION_RESULT] Resend Email sent to Owner (${ownerEmail}). Booking Code: ${bookingCode}`);
+
+        // 7. Customer Notification (Email using Resend)
+        if (data.customer.email) {
+          // Note: To send emails to arbitrary customer addresses, the Resend account 
+          // MUST have a verified custom domain. 'onboarding@resend.dev' only works for sending to yourself.
+          const resendResponse = await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              from: 'Nanata Studio <onboarding@resend.dev>', // MUST BE CHANGED TO VERIFIED DOMAIN IN PRODUCTION
+              to: [data.customer.email],
+              subject: `Konfirmasi Booking: ${service.name} di Nanata Studio`,
+              html: `
+                <div style="font-family: sans-serif; padding: 20px; background: #FFF7F9; border-radius: 10px; color: #333;">
+                  <h2 style="color: #E8A0BF; margin-bottom: 10px;">Halo ${data.customer.name}, Booking Kamu Berhasil! ✨</h2>
+                  <p>Terima kasih telah melakukan booking di Nanata Studio. Berikut adalah rincian jadwal kamu:</p>
+                  <table style="width: 100%; border-collapse: collapse; margin-top: 20px; background: white; padding: 15px; border-radius: 8px;">
+                    <tr><td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Booking ID</strong></td><td style="padding: 10px; border-bottom: 1px solid #eee;">${bookingCode}</td></tr>
+                    <tr><td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Layanan</strong></td><td style="padding: 10px; border-bottom: 1px solid #eee;">${service.name}</td></tr>
+                    <tr><td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Tanggal & Waktu</strong></td><td style="padding: 10px; border-bottom: 1px solid #eee;">${data.date} pkl ${displayTime}</td></tr>
+                    <tr><td style="padding: 10px;"><strong>Total Biaya</strong></td><td style="padding: 10px; font-weight: bold; color: #E8A0BF;">${service.priceLabel}</td></tr>
+                  </table>
+                  <p style="margin-top: 20px; font-size: 14px; color: #666;">
+                    Jika ada perubahan jadwal, mohon konfirmasi ke admin via WhatsApp minimal 2 jam sebelum kedatangan.<br>
+                    Sampai jumpa di studio! 💅
+                  </p>
+                </div>
+              `
+            })
+          });
+          
+          if (!resendResponse.ok) {
+             console.error(`[NOTIFICATION_RESULT] Customer Email blocked (Missing verified domain). Resend returned:`, await resendResponse.text());
+          }
+        }
       } catch (err) {
         console.error(`[NOTIFICATION_RESULT] Failed to send email via Resend:`, err);
       }
