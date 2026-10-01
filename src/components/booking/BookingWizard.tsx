@@ -197,10 +197,10 @@ export default function BookingWizard() {
     const handleWhatsApp = () => {
       const text = `Halo Nanata Studio, saya ingin konfirmasi booking dengan detail berikut:
 
-*Booking ID:* 
+*Booking ID:* ${confirmedBookingCode || '-'}
 *TREATMENT:* ${service?.name}
-*Tanggal:* 
-*Waktu:* `;
+*Tanggal:* ${state.date}
+*Waktu:* ${getDisplayTime()}`;
       window.open(`https://wa.me/6285283120151?text=${encodeURIComponent(text)}`, '_blank');
     };
 

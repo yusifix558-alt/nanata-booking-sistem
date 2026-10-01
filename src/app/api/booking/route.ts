@@ -87,9 +87,11 @@ ${data.customer.notes ? `\nNotes: ${data.customer.notes}` : ''}`,
       }
     };
 
-    if (data.customer.email) {
-      eventParams.attendees = [{ email: data.customer.email }];
-    }
+    // Skip adding attendees directly via Calendar API because service accounts on free Gmail 
+    // often get 403 Forbidden when trying to invite external emails.
+    // if (data.customer.email) {
+    //   eventParams.attendees = [{ email: data.customer.email }];
+    // }
 
     const gCalEvent = await createEvent(calendarId as string, eventParams);
     createdEventId = gCalEvent.id;
